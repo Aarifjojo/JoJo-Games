@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Guess Game</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .game-container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .game-container {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            grid-gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .grid div {
+            width: 60px;
+            height: 60px;
+            background-color: #87ceeb;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            perspective: 1000px; /* Enables 3D effects */
+        }
+
+        .grid div .front,
+        .grid div .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Hides the back face when flipped */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.6s ease;
+        }
+
+        .grid div .front {
+            background-color: #87ceeb;
+        }
+
+        .grid div .back {
+            background-color: #ffcccb; /* Default wrong guess color */
+            transform: rotateY(180deg); /* Start flipped */
+        }
+
+        .grid div.revealed .back {
+            background-color: #90ee90; /* Correct guess color */
+        }
+
+        .grid div.wrong .back {
+            background-color: #ffcccb; /* Wrong guess color */
+        }
+
+        .grid div.flipped .front {
+            transform: rotateY(180deg); /* Flip front side */
+        }
+
+        .grid div.flipped .back {
+            transform: rotateY(0deg); /* Reveal back side */
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Selectors */
+        .theme-selector, .animal-selector {
+            margin: 10px 0;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Message */
+        #message {
+            font-size: 18px;
+            color: #333;
+        }
+
+        body.dark-theme #message {
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Find the Hidden Animal!</h1>
+
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <label for="theme">Choose Theme:</label>
+            <select id="theme">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+            </select>
+        </div>
+
+        <!-- Animal Selector -->
+        <div class="animal-selector">
+            <label for="animal">Choose Animal:</label>
+            <select id="animal">
+                <option value="🐾">Paw (🐾)</option>
+                <option value="🐘">Elephant (🐘)</option>
+                <option value="🦁">Lion (🦁)</option>
+                <option value="老虎">Tiger (🐯)</option>
+                <option value="🐻">Bear (🐻)</option>
+                <option value="🦓">Zebra (🦓)</option>
+                <option value="🐒">Monkey (🐒)</option>
+                <option value="🐧">Penguin (🐧)</option>
+                <option value="兔子">Rabbit (🐰)</option>
+                <option value="🐸">Frog (🐸)</option>
+            </select>
+        </div>
+
+        <p id="attempts">Attempts: 0 / 5</p>
+        <div id="grid" class="grid"></div>
+        <p id="message"></p>
+
+        <!-- Restart Button -->
+        <button id="restartButton">Restart Game</button>
+    </div>
+
+    <audio id="correctSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+    <audio id="wrongSound" src="https://www.soundjay.com/button/beep-09.wav" preload="auto"></audio>
+    <audio id="gameOverSound" src="https://www.soundjay.com/misc/sounds/game-over-arcade-6446.mp3" preload="auto"></audio>
+
+    <script>
+        // Select DOM elements
+        const grid = document.getElementById('grid');
+        const message = document.getElementById('message');
+        const attemptsDisplay = document.getElementById('attempts');
+        const themeSelector = document.getElementById('theme');
+        const animalSelector = document.getElementById('animal');
+        const restartButton = document.getElementById('restartButton');
+        const correctSound = document.getElementById('correctSound');
+        const wrongSound = document.getElementById('wrongSound');
+        const gameOverSound = document.getElementById('gameOverSound');
+
+        // Game variables
+        let attempts = 0;
+        let maxAttempts = 5;
+        let animalPosition;
+        let selectedAnimal = '🐾';
+
+        // Create the grid
+        function createGrid(size) {
+            grid.innerHTML = ''; // Clear the grid
+            for (let i = 0; i < size * size; i++) {
+                const block = document.createElement('div');
+                block.classList.add('card');
+
+                const front = document.createElement('div');
+                front.classList.add('front');
+                front.style.backgroundColor = '#87ceeb'; // Initial color
+
+                const back = document.createElement('div');
+                back.classList.add('back');
+
+                block.appendChild(front);
+                block.appendChild(back);
+
+                block.addEventListener('click', () => checkGuess(i));
+                grid.appendChild(block);
+            }
+            // Randomly place the animal
+            animalPosition = Math.floor(Math.random() * (size * size));
+        }
+
+        // Check if the guess is correct
+        function checkGuess(position) {
+            if (attempts >= maxAttempts || grid.children[position].classList.contains('flipped')) return;
+
+            attempts++;
+            attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
+
+            const block = grid.children[position];
+            block.classList.add('flipped');
+
+            if (position === animalPosition) {
+                message.textContent = `🎉 You found the ${selectedAnimal}! 🎉`;
+                block.classList.add('revealed');
+                block.querySelector('.back').textContent = selectedAnimal;
+                block.querySelector('.back').style.backgroundColor = '#90ee90';
+                correctSound.play();
+                disableGrid();
+            } else {
+                message.textContent = 'Try again!';
+                block.classList.add('wrong');
+                block.querySelector('.back').textContent = '❌';
+                wrongSound.play();
+            }
+
+            if (attempts >= maxAttempts && position !== animalPosition) {
+                message.textContent = `Game Over! The ${selectedAnimal} was here.`;
+                grid.children[animalPosition].classList.add('flipped', 'revealed');
+                grid.children[animalPosition].querySelector('.back').textContent = selectedAnimal;
+                grid.children[animalPosition].querySelector('.back').style.backgroundColor = '#90ee90';
+                gameOverSound.play();
+                disableGrid();
+            }
+        }
+
+        // Disable the grid after finding the animal or game over
+        function disableGrid() {
+            Array.from(grid.children).forEach(block => {
+                block.style.pointerEvents = 'none';
+            });
+        }
+
+        // Reset the game
+        function resetGame() {
+            attempts = 0;
+            attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
+            message.textContent = '';
+            createGrid(4); // Create a 4x4 grid
+            Array.from(grid.children).forEach(block => {
+                block.classList.remove('flipped', 'revealed', 'wrong');
+                block.style.pointerEvents = 'auto';
+                block.querySelector('.back').textContent = '';
+                block.querySelector('.back').style.backgroundColor = '#ffcccb';
+            });
+        }
+
+        // Initialize the game
+        createGrid(4);
+
+        // Event Listeners
+        themeSelector.addEventListener('change', (e) => {
+            document.body.className = e.target.value === 'dark' ? 'dark-theme' : '';
+        });
+
+        animalSelector.addEventListener('change', (e) => {
+            selectedAnimal = e.target.value;
+            resetGame();
+        });
+
+        restartButton.addEventListener('click', resetGame);
+    </script>
+</body>
+</html>
