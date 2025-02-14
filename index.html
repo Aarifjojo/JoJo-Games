@@ -9,10 +9,11 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #f4f4f9;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease;
+            color: #fff;
+            transition: background 0.5s ease;
         }
 
         .game-container {
@@ -20,23 +21,71 @@
             width: 90%;
             max-width: 400px;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Dark Theme */
-        body.dark-theme {
-            background-color: #121212;
-            color: #e0e0e0;
+        /* Hover Effect on Game Container */
+        .game-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
         }
 
-        body.dark-theme .game-container {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
+        /* Theme and Animal Selectors */
+        .theme-selector, .animal-selector {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        select {
+            padding: 8px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        select:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Attempts Counter */
+        #attempts {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffeb3b;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            margin: 10px 0;
+        }
+
+        /* Grid Styling */
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 60px);
@@ -48,11 +97,16 @@
         .grid div {
             width: 60px;
             height: 60px;
-            background-color: #87ceeb;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            border-radius: 10px;
             cursor: pointer;
             position: relative;
-            perspective: 1000px; /* Enables 3D effects */
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+        }
+
+        .grid div:hover {
+            transform: scale(1.1);
         }
 
         .grid div .front,
@@ -60,8 +114,8 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden; /* Hides the back face when flipped */
-            border-radius: 5px;
+            backface-visibility: hidden;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -71,66 +125,86 @@
         }
 
         .grid div .front {
-            background-color: #87ceeb;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
         }
 
         .grid div .back {
-            background-color: #ffcccb; /* Default wrong guess color */
-            transform: rotateY(180deg); /* Start flipped */
+            background: linear-gradient(135deg, #ff6f61, #ff3b30);
+            transform: rotateY(180deg);
         }
 
         .grid div.revealed .back {
-            background-color: #90ee90; /* Correct guess color */
+            background: linear-gradient(135deg, #66bb6a, #43a047);
         }
 
         .grid div.wrong .back {
-            background-color: #ffcccb; /* Wrong guess color */
+            background: linear-gradient(135deg, #ff5252, #d32f2f);
         }
 
         .grid div.flipped .front {
-            transform: rotateY(180deg); /* Flip front side */
+            transform: rotateY(180deg);
         }
 
         .grid div.flipped .back {
-            transform: rotateY(0deg); /* Reveal back side */
+            transform: rotateY(0deg);
+        }
+
+        /* Message Styling */
+        #message {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         /* Buttons */
         button {
             padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Selectors */
-        .theme-selector, .animal-selector {
-            margin: 10px 0;
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        select {
-            padding: 5px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        /* Dark Theme */
+        body.dark-theme {
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
         }
 
-        /* Message */
-        #message {
-            font-size: 18px;
-            color: #333;
+        body.dark-theme .game-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        body.dark-theme h1,
+        body.dark-theme label,
         body.dark-theme #message {
             color: #e0e0e0;
+        }
+
+        body.dark-theme select {
+            background: rgba(0, 0, 0, 0.2);
+            color: #e0e0e0;
+        }
+
+        body.dark-theme button {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
         }
     </style>
 </head>
@@ -172,9 +246,10 @@
         <button id="restartButton">Restart Game</button>
     </div>
 
-    <audio id="correctSound" src= "correctsound.mp3" auto"></audio>
-    <audio id="wrongSound" src="wrongsound.mp3" auto"></audio>
-    <audio id="gameOverSound" src= "GameOver.mp3" auto"></audio>
+    <!-- Custom Sound Files -->
+    <audio id="correctSound" src="correctsound.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="wrongsound.mp3" preload="auto"></audio>
+    <audio id="gameOverSound" src="GameOver.mp3" preload="auto"></audio>
 
     <script>
         // Select DOM elements
@@ -203,7 +278,6 @@
 
                 const front = document.createElement('div');
                 front.classList.add('front');
-                front.style.backgroundColor = '#87ceeb'; // Initial color
 
                 const back = document.createElement('div');
                 back.classList.add('back');
@@ -232,21 +306,19 @@
                 message.textContent = `🎉 You found the ${selectedAnimal}! 🎉`;
                 block.classList.add('revealed');
                 block.querySelector('.back').textContent = selectedAnimal;
-                block.querySelector('.back').style.backgroundColor = '#90ee90';
                 correctSound.play();
                 disableGrid();
             } else {
-                message.textContent = 'Try again!';
+                message.textContent = '❌ Try again!';
                 block.classList.add('wrong');
                 block.querySelector('.back').textContent = '❌';
                 wrongSound.play();
             }
 
             if (attempts >= maxAttempts && position !== animalPosition) {
-                message.textContent = `Game Over! The ${selectedAnimal} was here.`;
+                message.textContent = `💀 Game Over! The ${selectedAnimal} was here.`;
                 grid.children[animalPosition].classList.add('flipped', 'revealed');
                 grid.children[animalPosition].querySelector('.back').textContent = selectedAnimal;
-                grid.children[animalPosition].querySelector('.back').style.backgroundColor = '#90ee90';
                 gameOverSound.play();
                 disableGrid();
             }
@@ -269,7 +341,6 @@
                 block.classList.remove('flipped', 'revealed', 'wrong');
                 block.style.pointerEvents = 'auto';
                 block.querySelector('.back').textContent = '';
-                block.querySelector('.back').style.backgroundColor = '#ffcccb';
             });
         }
 
