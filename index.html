@@ -3,361 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Guess Game</title>
+    <title>JoJo Games - Play Fun Games Online</title>
     <style>
-        /* General Styles */
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
             background: linear-gradient(135deg, #6e8efb, #a777e3);
-            margin: 0;
-            padding: 0;
             color: #fff;
-            transition: background 0.5s ease;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .game-container {
-            margin: 50px auto;
-            width: 90%;
-            max-width: 400px;
+        /* Header Styling */
+        .site-header {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .site-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Game List Styling */
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
+        }
+
+        .game-card {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 200px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Hover Effect on Game Container */
-        .game-container:hover {
+        .game-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        .game-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
-        /* Theme and Animal Selectors */
-        .theme-selector, .animal-selector {
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .game-card p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
-        label {
-            font-size: 1rem;
-            font-weight: bold;
-            margin-right: 10px;
-            color: #fff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        select {
-            padding: 8px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        select:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Attempts Counter */
-        #attempts {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ffeb3b;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            margin: 10px 0;
-        }
-
-        /* Grid Styling */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 60px);
-            grid-gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .grid div {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
-            border-radius: 10px;
-            cursor: pointer;
-            position: relative;
-            perspective: 1000px;
-            transition: transform 0.3s ease;
-        }
-
-        .grid div:hover {
-            transform: scale(1.1);
-        }
-
-        .grid div .front,
-        .grid div .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            transition: transform 0.6s ease;
-        }
-
-        .grid div .front {
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
-        }
-
-        .grid div .back {
-            background: linear-gradient(135deg, #ff6f61, #ff3b30);
-            transform: rotateY(180deg);
-        }
-
-        .grid div.revealed .back {
-            background: linear-gradient(135deg, #66bb6a, #43a047);
-        }
-
-        .grid div.wrong .back {
-            background: linear-gradient(135deg, #ff5252, #d32f2f);
-        }
-
-        .grid div.flipped .front {
-            transform: rotateY(180deg);
-        }
-
-        .grid div.flipped .back {
-            transform: rotateY(0deg);
-        }
-
-        /* Message Styling */
-        #message {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #fff;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Buttons */
-        button {
+        .play-button {
+            display: inline-block;
             padding: 10px 20px;
             font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        button:hover {
+        .play-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
 
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        .play-button.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
         }
 
-        /* Dark Theme */
-        body.dark-theme {
-            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+        .play-button.disabled:hover {
+            transform: none;
         }
 
-        body.dark-theme .game-container {
+        /* Footer Styling */
+        .site-footer {
+            padding: 20px;
             background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-theme h1,
-        body.dark-theme label,
-        body.dark-theme #message {
-            color: #e0e0e0;
-        }
-
-        body.dark-theme select {
-            background: rgba(0, 0, 0, 0.2);
-            color: #e0e0e0;
-        }
-
-        body.dark-theme button {
-            background: linear-gradient(135deg, #4b6cb7, #182848);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <h1>Find the Hidden Animal!</h1>
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Welcome to JoJo Games!</h1>
+        <p>Your ultimate destination for fun and interactive games.</p>
+    </header>
 
-        <!-- Theme Selector -->
-        <div class="theme-selector">
-            <label for="theme">Choose Theme:</label>
-            <select id="theme">
-                <option value="light">Light Theme</option>
-                <option value="dark">Dark Theme</option>
-            </select>
+    <!-- Main Content -->
+    <main class="game-list">
+        <div class="game-card">
+            <h2>Animal Guess Game</h2>
+            <p>Find the hidden animal in the grid before your attempts run out!</p>
+            <a href="animal-guess.html" class="play-button">Play Now</a>
         </div>
 
-        <!-- Animal Selector -->
-        <div class="animal-selector">
-            <label for="animal">Choose Animal:</label>
-            <select id="animal">
-                <option value="🐾">Paw (🐾)</option>
-                <option value="🐘">Elephant (🐘)</option>
-                <option value="🦁">Lion (🦁)</option>
-                <option value="老虎">Tiger (🐯)</option>
-                <option value="🐻">Bear (🐻)</option>
-                <option value="🦓">Zebra (🦓)</option>
-                <option value="🐒">Monkey (🐒)</option>
-                <option value="🐧">Penguin (🐧)</option>
-                <option value="兔子">Rabbit (🐰)</option>
-                <option value="🐸">Frog (🐸)</option>
-            </select>
+        <div class="game-card">
+            <h2>Memory Match</h2>
+            <p>Match pairs of cards in this classic memory game.</p>
+            <a href="#" class="play-button disabled">Coming Soon</a>
         </div>
 
-        <p id="attempts">Attempts: 0 / 5</p>
-        <div id="grid" class="grid"></div>
-        <p id="message"></p>
+        <div class="game-card">
+            <h2>Tic-Tac-Toe</h2>
+            <p>Challenge your friends or the computer in this classic game.</p>
+            <a href="#" class="play-button disabled">Coming Soon</a>
+        </div>
 
-        <!-- Restart Button -->
-        <button id="restartButton">Restart Game</button>
-    </div>
+        <div class="game-card">
+            <h2>Snake Game</h2>
+            <p>Eat as many apples as you can without crashing into the walls!</p>
+            <a href="#" class="play-button disabled">Coming Soon</a>
+        </div>
+    </main>
 
-    <!-- Custom Sound Files -->
-    <audio id="correctSound" src="correctsound.mp3" preload="auto"></audio>
-    <audio id="wrongSound" src="wrongsound.mp3" preload="auto"></audio>
-    <audio id="gameOverSound" src="GameOver.mp3" preload="auto"></audio>
-
-    <script>
-        // Select DOM elements
-        const grid = document.getElementById('grid');
-        const message = document.getElementById('message');
-        const attemptsDisplay = document.getElementById('attempts');
-        const themeSelector = document.getElementById('theme');
-        const animalSelector = document.getElementById('animal');
-        const restartButton = document.getElementById('restartButton');
-        const correctSound = document.getElementById('correctSound');
-        const wrongSound = document.getElementById('wrongSound');
-        const gameOverSound = document.getElementById('gameOverSound');
-
-        // Game variables
-        let attempts = 0;
-        let maxAttempts = 5;
-        let animalPosition;
-        let selectedAnimal = '🐾';
-
-        // Create the grid
-        function createGrid(size) {
-            grid.innerHTML = ''; // Clear the grid
-            for (let i = 0; i < size * size; i++) {
-                const block = document.createElement('div');
-                block.classList.add('card');
-
-                const front = document.createElement('div');
-                front.classList.add('front');
-
-                const back = document.createElement('div');
-                back.classList.add('back');
-
-                block.appendChild(front);
-                block.appendChild(back);
-
-                block.addEventListener('click', () => checkGuess(i));
-                grid.appendChild(block);
-            }
-            // Randomly place the animal
-            animalPosition = Math.floor(Math.random() * (size * size));
-        }
-
-        // Check if the guess is correct
-        function checkGuess(position) {
-            if (attempts >= maxAttempts || grid.children[position].classList.contains('flipped')) return;
-
-            attempts++;
-            attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
-
-            const block = grid.children[position];
-            block.classList.add('flipped');
-
-            if (position === animalPosition) {
-                message.textContent = `🎉 You found the ${selectedAnimal}! 🎉`;
-                block.classList.add('revealed');
-                block.querySelector('.back').textContent = selectedAnimal;
-                correctSound.play();
-                disableGrid();
-            } else {
-                message.textContent = '❌ Try again!';
-                block.classList.add('wrong');
-                block.querySelector('.back').textContent = '❌';
-                wrongSound.play();
-            }
-
-            if (attempts >= maxAttempts && position !== animalPosition) {
-                message.textContent = `💀 Game Over! The ${selectedAnimal} was here.`;
-                grid.children[animalPosition].classList.add('flipped', 'revealed');
-                grid.children[animalPosition].querySelector('.back').textContent = selectedAnimal;
-                gameOverSound.play();
-                disableGrid();
-            }
-        }
-
-        // Disable the grid after finding the animal or game over
-        function disableGrid() {
-            Array.from(grid.children).forEach(block => {
-                block.style.pointerEvents = 'none';
-            });
-        }
-
-        // Reset the game
-        function resetGame() {
-            attempts = 0;
-            attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
-            message.textContent = '';
-            createGrid(4); // Create a 4x4 grid
-            Array.from(grid.children).forEach(block => {
-                block.classList.remove('flipped', 'revealed', 'wrong');
-                block.style.pointerEvents = 'auto';
-                block.querySelector('.back').textContent = '';
-            });
-        }
-
-        // Initialize the game
-        createGrid(4);
-
-        // Event Listeners
-        themeSelector.addEventListener('change', (e) => {
-            document.body.className = e.target.value === 'dark' ? 'dark-theme' : '';
-        });
-
-        animalSelector.addEventListener('change', (e) => {
-            selectedAnimal = e.target.value;
-            resetGame();
-        });
-
-        restartButton.addEventListener('click', resetGame);
-    </script>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2023 JoJo Games. All rights reserved.</p>
+    </footer>
 </body>
 </html>
