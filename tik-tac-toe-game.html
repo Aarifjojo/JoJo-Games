@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,12 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background: linear-gradient(135deg, #141e30, #243b55);
             margin: 0;
             padding: 0;
             color: #fff;
             transition: background 0.5s ease;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow: hidden;
         }
 
         /* Title Styling */
@@ -23,34 +24,39 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.8);
+            color: #ffeb3b;
+            text-shadow: 0 4px 10px rgba(255, 235, 59, 0.7), 0 0 15px rgba(255, 255, 255, 0.6);
             animation: fadeIn 2s ease-in-out;
         }
 
         /* Message Styling */
         #message {
             font-size: 1.5rem;
-            margin: 20px 0;
+            margin: 15px 0;
             color: #ffeb3b;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 5px rgba(255, 235, 59, 0.7);
             animation: pulse 1.5s infinite alternate;
         }
 
-        /* Grid Styling */
+        /* Game Board with Glassmorphism */
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 100px);
-            grid-gap: 10px;
+            grid-gap: 12px;
             justify-content: center;
-            margin: 20px 0;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
+        /* Cell Styling */
         .grid div {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
             border-radius: 10px;
             cursor: pointer;
             display: flex;
@@ -65,49 +71,62 @@
         }
 
         .grid div:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(255, 235, 59, 0.5);
         }
 
+        /* X & O Effects */
         .grid div.X {
-            background: linear-gradient(135deg, #66bb6a, #43a047);
+            background: linear-gradient(135deg, #00ff7f, #009688);
+            box-shadow: 0 0 15px #00ff7f;
             animation: glow-green 1.5s infinite alternate;
         }
 
         .grid div.O {
-            background: linear-gradient(135deg, #ffeb3b, #f57c00);
+            background: linear-gradient(135deg, #ffeb3b, #ff8c00);
+            box-shadow: 0 0 15px #ffeb3b;
             animation: glow-yellow 1.5s infinite alternate;
         }
 
         /* Glow Animations */
         @keyframes glow-green {
-            0% { box-shadow: 0 0 10px #66bb6a, 0 0 20px #43a047; }
-            100% { box-shadow: 0 0 20px #66bb6a, 0 0 40px #43a047; }
+            0% {
+                box-shadow: 0 0 10px #00ff7f, 0 0 20px #009688;
+            }
+
+            100% {
+                box-shadow: 0 0 20px #00ff7f, 0 0 40px #009688;
+            }
         }
 
         @keyframes glow-yellow {
-            0% { box-shadow: 0 0 10px #ffeb3b, 0 0 20px #f57c00; }
-            100% { box-shadow: 0 0 20px #ffeb3b, 0 0 40px #f57c00; }
+            0% {
+                box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff8c00;
+            }
+
+            100% {
+                box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ff8c00;
+            }
         }
 
         /* Buttons */
         button {
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 1rem;
             font-weight: bold;
             color: #fff;
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         button:active {
@@ -138,6 +157,34 @@
             margin-bottom: 20px;
         }
 
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+
         /* Confetti Effect */
         .confetti {
             position: absolute;
@@ -149,22 +196,42 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-100vh); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         /* Text Animations */
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="game-container">
         <h1>Tic-Tac-Toe Game</h1>
@@ -366,4 +433,5 @@
         restartButton.addEventListener('click', restartGame);
     </script>
 </body>
+
 </html>
