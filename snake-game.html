@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game | JoJo Games</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            transition: background 0.5s ease;
+        }
+
+        .game-container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Canvas Styling */
+        canvas {
+            display: block;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stats */
+        .stats {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reward Section */
+        .reward {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            font-size: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .reward img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Snake Game</h1>
+        <div class="stats">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+
+        <!-- Target Score Selection -->
+        <div id="target-selection" style="margin-bottom: 20px;">
+            <label for="target-score">Select Target Score:</label>
+            <select id="target-score">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+                <option value="endless">Endless</option>
+            </select>
+            <button id="startGameButton">Start Game</button>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <button id="restartButton" style="display: none;">Restart Game</button>
+    </div>
+
+    <!-- Reward Section -->
+    <div class="reward" id="reward">
+        <img src="../assets/images/fireworks.png" alt="Fireworks">
+        <p id="reward-message">🎉 You Won! 🎉</p>
+        <p>Your final score: <span id="final-score">0</span></p>
+        <button id="playAgainButton">Play Again</button>
+    </div>
+
+    <!-- Custom Sound Files -->
+    <audio id="eatSound" src="match.mp3" preload="auto"></audio>
+    <audio id="gameOverSound" src="GameOver.mp3" preload="auto"></audio>
+    <audio id="winSound" src="WINcheer.mp3" preload="auto"></audio>
+
+    <script>
+        // Select DOM elements
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d'); // Ensure canvas context is initialized
+        const scoreDisplay = document.getElementById('score');
+        const restartButton = document.getElementById('restartButton');
+        const rewardSection = document.getElementById('reward');
+        const rewardMessage = document.getElementById('reward-message');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const playAgainButton = document.getElementById('playAgainButton');
+        const eatSound = document.getElementById('eatSound');
+        const gameOverSound = document.getElementById('gameOverSound');
+        const winSound = document.getElementById('winSound');
+        const startGameButton = document.getElementById('startGameButton');
+        const targetScoreDropdown = document.getElementById('target-score');
+
+        // Game variables
+        let snake = [{ x: 200, y: 200 }]; // Initial snake position
+        let dx = 10; // Horizontal velocity
+        let dy = 0;  // Vertical velocity
+        let food = { x: 300, y: 300 }; // Initial food position
+        let score = 0;
+        let isGameOver = false;
+
+        // Target score
+        let targetScore = 50; // Default target score
+
+        // Draw the snake
+        function drawSnake() {
+            snake.forEach((segment, index) => {
+                ctx.fillStyle = index === 0 ? '#66bb6a' : '#43a047'; // Head is lighter green
+                ctx.strokeStyle = '#2e7d32';
+                ctx.fillRect(segment.x, segment.y, 10, 10); // Draw each segment
+                ctx.strokeRect(segment.x, segment.y, 10, 10); // Add borders
+            });
+        }
+
+        // Move the snake
+        function moveSnake() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head);
+
+            // Check if the snake eats the food
+            if (Math.abs(head.x - food.x) < 10 && Math.abs(head.y - food.y) < 10) {
+                score++;
+                scoreDisplay.textContent = score;
+                eatSound.play();
+                placeFood();
+
+                // Check if the target score is reached
+                checkTargetScore();
+            } else {
+                snake.pop(); // Remove the tail if no food is eaten
+            }
+        }
+
+        // Place food randomly on the canvas
+        function placeFood() {
+            food.x = Math.floor(Math.random() * 40) * 10; // Random x position
+            food.y = Math.floor(Math.random() * 40) * 10; // Random y position
+        }
+
+        // Draw the food
+        function drawFood() {
+            ctx.fillStyle = '#ffeb3b';
+            ctx.strokeStyle = '#f57c00';
+            ctx.fillRect(food.x, food.y, 10, 10); // Draw food
+            ctx.strokeRect(food.x, food.y, 10, 10); // Add borders
+        }
+
+        // Check for collisions
+        function checkCollision() {
+            const head = snake[0];
+
+            // Wall collision
+            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+                return true;
+            }
+
+            // Self collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Check if the target score is reached
+        function checkTargetScore() {
+            if (targetScore !== "endless" && score >= targetScore) {
+                isGameOver = true;
+                winSound.play();
+                showRewardScreen(`🎉 You Reached Your Target Score (${targetScore})! 🎉`);
+            }
+        }
+
+        // Game loop
+        function gameLoop() {
+            if (isGameOver) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            drawFood(); // Draw food
+            moveSnake(); // Move the snake
+            drawSnake(); // Draw the snake
+
+            if (checkCollision()) {
+                isGameOver = true;
+                gameOverSound.play();
+                showRewardScreen("Game Over!");
+            }
+
+            setTimeout(gameLoop, 100); // Adjust speed here (lower value = faster)
+        }
+
+        // Show reward screen
+        function showRewardScreen(message) {
+            finalScoreDisplay.textContent = score;
+            rewardMessage.textContent = message;
+            rewardSection.style.display = 'flex';
+
+            if (message.includes("Reached")) {
+                rewardSection.querySelector('img').style.display = 'block';
+            } else {
+                rewardSection.querySelector('img').style.display = 'none';
+            }
+        }
+
+        // Restart the game
+        function restartGame() {
+            rewardSection.style.display = 'none';
+            snake = [{ x: 200, y: 200 }]; // Reset snake position
+            dx = 10; // Reset horizontal velocity
+            dy = 0;  // Reset vertical velocity
+            score = 0;
+            scoreDisplay.textContent = score;
+            isGameOver = false;
+            placeFood(); // Place new food
+            targetScore = targetScoreDropdown.value === "endless" ? "endless" : parseInt(targetScoreDropdown.value);
+            gameLoop();  // Restart the game loop
+        }
+
+        // Handle keyboard input
+        function changeDirection(event) {
+            const LEFT_KEY = 37;
+            const RIGHT_KEY = 39;
+            const UP_KEY = 38;
+            const DOWN_KEY = 40;
+
+            const keyPressed = event.keyCode;
+
+            const goingUp = dy === -10;
+            const goingDown = dy === 10;
+            const goingRight = dx === 10;
+            const goingLeft = dx === -10;
+
+            if (keyPressed === LEFT_KEY && !goingRight) {
+                dx = -10;
+                dy = 0;
+            }
+
+            if (keyPressed === UP_KEY && !goingDown) {
+                dx = 0;
+                dy = -10;
+            }
+
+            if (keyPressed === RIGHT_KEY && !goingLeft) {
+                dx = 10;
+                dy = 0;
+            }
+
+            if (keyPressed === DOWN_KEY && !goingUp) {
+                dx = 0;
+                dy = 10;
+            }
+        }
+
+        // Start the game
+        function startGame() {
+            targetScore = targetScoreDropdown.value === "endless" ? "endless" : parseInt(targetScoreDropdown.value);
+            document.getElementById('target-selection').style.display = 'none';
+            restartButton.style.display = 'block';
+            gameLoop();
+        }
+
+        // Event Listeners
+        startGameButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', restartGame);
+        playAgainButton.addEventListener('click', restartGame);
+        document.addEventListener('keydown', changeDirection);
+    </script>
+</body>
+</html>
