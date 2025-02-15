@@ -2,18 +2,59 @@
 <html lang="en">
 
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Play the classic Tic-Tac-Toe game online against JoJo, the AI opponent. Challenge yourself and see if you can beat JoJo in this fun and interactive game.">
+    <meta name="keywords" content="Tic-Tac-Toe, JoJo Games, Online Game, Free Game, Play Tic-Tac-Toe, AI Opponent">
+    <meta name="author" content="JoJo Games">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Tic-Tac-Toe Game | JoJo Games">
+    <meta property="og:description"
+        content="Play the classic Tic-Tac-Toe game online against JoJo, the AI opponent. Challenge yourself and see if you can beat JoJo in this fun and interactive game.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/tic-tac-toe">
+    <meta property="og:image" content="https://www.example.com/images/tic-tac-toe-thumbnail.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tic-Tac-Toe Game | JoJo Games">
+    <meta name="twitter:description"
+        content="Play the classic Tic-Tac-Toe game online against JoJo, the AI opponent. Challenge yourself and see if you can beat JoJo in this fun and interactive game.">
+    <meta name="twitter:image" content="https://www.example.com/images/tic-tac-toe-thumbnail.png">
+
+    <!-- Title Tag -->
     <title>Tic-Tac-Toe Game | JoJo Games</title>
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4W6FJ7ZCV"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-T4W6FJ7ZCV');
     </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Tic-Tac-Toe Game",
+        "description": "Play the classic Tic-Tac-Toe game online against JoJo, the AI opponent. Challenge yourself and see if you can beat JoJo in this fun and interactive game.",
+        "url": "https://www.example.com/tic-tac-toe",
+        "image": "https://www.example.com/images/tic-tac-toe-thumbnail.png",
+        "gamePlatform": "Web",
+        "genre": "Puzzle",
+        "playMode": "SinglePlayer",
+        "applicationCategory": "GameApplication"
+    }
+    </script>
+
+    <!-- CSS Styling -->
     <style>
         /* General Styles */
         body {
@@ -246,15 +287,17 @@
         <h1>Tic-Tac-Toe Game</h1>
         <p id="message">Your turn (X)</p>
         <div id="grid" class="grid"></div>
-        <button id="restartButton">Restart Game</button>
+        <button id="restartButton">Restart Game</button> <!-- Main Restart Button -->
     </div>
 
     <!-- Reward Section -->
-    <div class="reward" id="reward">
+    <div class="reward" id="reward" style="display: none;">
         <img src="Fireworks.png" alt="Fireworks">
         <p>🎉 You Won! 🎉</p>
         <p>You beat JoJo in this epic match!</p>
+        <button id="rewardRestartButton">Play Again</button> <!-- Unique ID -->
     </div>
+
 
     <!-- Custom Sound Files -->
     <audio id="clickSound" src="CardFlip.mp3" preload="auto"></audio>
@@ -266,8 +309,11 @@
         // Select DOM elements
         const grid = document.getElementById('grid');
         const message = document.getElementById('message');
-        const restartButton = document.getElementById('restartButton');
+        const mainRestartButton = document.getElementById('restartButton'); // Main restart button
+        const rewardRestartButton = document.getElementById('rewardRestartButton'); // Play Again button
         const rewardSection = document.getElementById('reward');
+
+        // Sound elements
         const clickSound = document.getElementById('clickSound');
         const winSound = document.getElementById('winSound');
         const drawSound = document.getElementById('drawSound');
@@ -277,6 +323,22 @@
         let board = ['', '', '', '', '', '', '', '', ''];
         let currentPlayer = 'X'; // Human is X, Computer is O
         let isGameActive = true;
+
+        // Restart game function
+        function restartGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            isGameActive = true;
+            currentPlayer = 'X';
+            message.textContent = 'Your turn (X)';
+            rewardSection.style.display = 'none'; // Hide reward section
+            mainRestartButton.style.display = 'none'; // Hide main restart button
+            createGrid();
+        }
+
+        // Attach event listeners to both buttons
+        mainRestartButton.addEventListener('click', restartGame);
+        rewardRestartButton.addEventListener('click', restartGame);
+
 
         // Winning combinations
         const winningCombinations = [
