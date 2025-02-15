@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Guess Game | JoJo Games</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Play the Animal Guess Game at JoJo Games! A fun and interactive guessing game for animal lovers. Enjoy challenges, hints, and more.">
+    <meta name="keywords"
+        content="Animal Guess Game, guessing game, fun animal game, JoJo Games, play online, free game">
+    <meta name="author" content="JoJo Games">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Animal Guess Game | JoJo Games">
+    <meta property="og:description"
+        content="Guess the animals in this exciting game! Test your knowledge and have fun with JoJo Games.">
+    <meta property="og:image" content="https://yourwebsite.com/game-thumbnail.jpg">
+    <meta property="og:url" content="https://yourwebsite.com/animal-guess-game">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Animal Guess Game | JoJo Games">
+    <meta name="twitter:description"
+        content="Enjoy a fun and interactive guessing game! Play the Animal Guess Game now.">
+    <meta name="twitter:image" content="https://yourwebsite.com/game-thumbnail.jpg">
+
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Animal Guess Game",
+      "description": "An interactive guessing game where players guess different animals.",
+      "image": "https://yourwebsite.com/game-thumbnail.jpg",
+      "url": "https://yourwebsite.com/animal-guess-game",
+      "author": {
+        "@type": "Organization",
+        "name": "JoJo Games"
+      }
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4W6FJ7ZCV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-T4W6FJ7ZCV');
+    </script>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: radial-gradient(circle, #0d0d0d, #1a1a1a);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            transition: background 0.5s ease-in-out;
+        }
+
+        /* Game Container */
+        .game-container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 450px;
+            padding: 25px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 170, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 255, 170, 0.9);
+        }
+
+        /* Title */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #00ffaa;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.9);
+            margin-bottom: 20px;
+        }
+
+        /* Theme & Animal Selector */
+        .theme-selector,
+        .animal-selector {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #00ffaa;
+            text-shadow: 0 0 5px rgba(0, 255, 170, 0.8);
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(0, 255, 170, 0.2);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+        }
+
+        select:hover {
+            background: rgba(0, 255, 170, 0.4);
+        }
+
+        /* Attempts Counter */
+        #attempts {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+            margin: 15px 0;
+        }
+
+        /* Grid Styling */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 75px);
+            grid-gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .grid div {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #00ffaa, #00b37a);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            perspective: 1200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 255, 170, 0.7);
+        }
+
+        .grid div:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.9);
+        }
+
+        .grid div .front,
+        .grid div .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            transition: transform 0.6s ease;
+        }
+
+        .grid div .front {
+            background: linear-gradient(135deg, #00ffaa, #00b37a);
+        }
+
+        .grid div .back {
+            background: linear-gradient(135deg, #ff0066, #ff0033);
+            transform: rotateY(180deg);
+        }
+
+        .grid div.revealed .back {
+            background: linear-gradient(135deg, #44ff44, #22cc22);
+        }
+
+        .grid div.wrong .back {
+            background: linear-gradient(135deg, #ff4444, #cc2222);
+        }
+
+        .grid div.flipped .front {
+            transform: rotateY(180deg);
+        }
+
+        .grid div.flipped .back {
+            transform: rotateY(0deg);
+        }
+
+        /* Message Styling */
+        #message {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #00ffaa;
+            text-shadow: 0 0 8px rgba(0, 255, 170, 0.8);
+        }
+
+        /* Buttons */
+        button {
+            padding: 14px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #0088ff, #0055cc);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 136, 255, 0.7);
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.9);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 0 10px rgba(0, 136, 255, 0.6);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>Find the Hidden Animal!</h1>
+
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <label for="theme">Choose Theme:</label>
+            <select id="theme">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+            </select>
+        </div>
+
+        <!-- Animal Selector -->
+        <div class="animal-selector">
+            <label for="animal">Choose Animal:</label>
+            <select id="animal">
+                <option value="🐾">Paw (🐾)</option>
+                <option value="🐘">Elephant (🐘)</option>
+                <option value="🦁">Lion (🦁)</option>
+                <option value="🐯">Tiger (🐯)</option>
+                <option value="🐻">Bear (🐻)</option>
+                <option value="🦓">Zebra (🦓)</option>
+                <option value="🐒">Monkey (🐒)</option>
+                <option value="🐧">Penguin (🐧)</option>
+                <option value="🐰">Rabbit (🐰)</option>
+                <option value="🐸">Frog (🐸)</option>
+            </select>
+        </div>
+
+        <p id="attempts">Attempts: 0 / 5</p>
+        <div id="grid" class="grid"></div>
+        <p id="message"></p>
+
+        <!-- Restart Button -->
+        <button id="restartButton">Restart Game</button>
+    </div>
+
+    <!-- Custom Sound Files -->
+    <audio id="correctSound" src="/mp3/correctsound.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="/mp3/wrongsound.mp3" preload="auto"></audio>
+    <audio id="gameOverSound" src="/mp3/GameOver.mp3" preload="auto"></audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grid = document.getElementById('grid');
+            const message = document.getElementById('message');
+            const attemptsDisplay = document.getElementById('attempts');
+            const themeSelector = document.getElementById('theme');
+            const animalSelector = document.getElementById('animal');
+            const restartButton = document.getElementById('restartButton');
+            const correctSound = document.getElementById('correctSound');
+            const wrongSound = document.getElementById('wrongSound');
+            const gameOverSound = document.getElementById('gameOverSound');
+
+            let attempts = 0;
+            let maxAttempts = 5;
+            let animalPosition;
+            let selectedAnimal = '🐾';
+
+            function createGrid(size) {
+                grid.innerHTML = '';
+                for (let i = 0; i < size * size; i++) {
+                    const block = document.createElement('div');
+                    block.classList.add('card');
+                    const front = document.createElement('div');
+                    front.classList.add('front');
+                    const back = document.createElement('div');
+                    back.classList.add('back');
+                    block.appendChild(front);
+                    block.appendChild(back);
+                    block.addEventListener('click', () => checkGuess(i));
+                    grid.appendChild(block);
+                }
+                animalPosition = Math.floor(Math.random() * (size * size));
+            }
+
+            function checkGuess(position) {
+                if (attempts >= maxAttempts || grid.children[position].classList.contains('flipped')) return;
+                attempts++;
+                attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
+                const block = grid.children[position];
+                block.classList.add('flipped');
+                if (position === animalPosition) {
+                    message.textContent = `🎉 You found the ${selectedAnimal}! 🎉`;
+                    block.classList.add('revealed');
+                    block.querySelector('.back').textContent = selectedAnimal;
+                    correctSound.play();
+                    disableGrid();
+                } else {
+                    message.textContent = '❌ Try again!';
+                    block.classList.add('wrong');
+                    block.querySelector('.back').textContent = '❌';
+                    wrongSound.play();
+                }
+                if (attempts >= maxAttempts && position !== animalPosition) {
+                    message.textContent = `💀 Game Over! The ${selectedAnimal} was here.`;
+                    grid.children[animalPosition].classList.add('flipped', 'revealed');
+                    grid.children[animalPosition].querySelector('.back').textContent = selectedAnimal;
+                    gameOverSound.play();
+                    disableGrid();
+                }
+            }
+
+            function disableGrid() {
+                Array.from(grid.children).forEach(block => {
+                    block.style.pointerEvents = 'none';
+                });
+            }
+
+            function resetGame() {
+                attempts = 0;
+                attemptsDisplay.textContent = `Attempts: ${attempts} / ${maxAttempts}`;
+                message.textContent = '';
+                createGrid(4);
+            }
+
+            createGrid(4);
+
+            themeSelector.addEventListener('change', (e) => {
+                document.body.className = e.target.value === 'dark' ? 'dark-theme' : '';
+            });
+
+            animalSelector.addEventListener('change', (e) => {
+                selectedAnimal = e.target.value;
+                resetGame();
+            });
+
+            restartButton.addEventListener('click', resetGame);
+        });
+    </script>
+</body>
+
+</html>
