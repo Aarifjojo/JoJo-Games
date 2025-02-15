@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click the Box Game</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4W6FJ7ZCV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-T4W6FJ7ZCV');
+    </script>
     <style>
         body {
             text-align: center;
@@ -13,13 +23,16 @@
             margin: 0;
             padding: 0;
         }
+
         h1 {
             font-size: 2.5rem;
             margin-top: 20px;
         }
+
         p {
             font-size: 1.2rem;
         }
+
         #gameArea {
             width: 400px;
             height: 400px;
@@ -31,6 +44,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
+
         .box {
             width: 50px;
             height: 50px;
@@ -41,13 +55,17 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.1s ease;
         }
+
         .box:hover {
             transform: scale(1.1);
         }
-        #score, #time {
+
+        #score,
+        #time {
             font-weight: bold;
             font-size: 1.5rem;
         }
+
         /* Game Over Screen */
         #gameOverScreen {
             position: fixed;
@@ -62,14 +80,17 @@
             display: none;
             box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
         }
+
         #gameOverScreen h2 {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
+
         #gameOverScreen p {
             font-size: 1.5rem;
             margin: 10px 0;
         }
+
         #playAgain {
             background: #ff4e50;
             color: white;
@@ -80,11 +101,13 @@
             cursor: pointer;
             transition: 0.3s;
         }
+
         #playAgain:hover {
             background: #e84142;
         }
     </style>
 </head>
+
 <body>
     <h1>Click the Box Game</h1>
     <p>Score: <span id="score">0</span></p>
@@ -148,12 +171,12 @@
         function endGame() {
             gameOverSound.play();
             finalScoreDisplay.textContent = score;
-            
+
             if (score > bestScore) {
                 bestScore = score;
                 localStorage.setItem("bestScore", bestScore);
             }
-            
+
             bestScoreDisplay.textContent = bestScore;
             gameOverScreen.style.display = "block";
         }
@@ -163,4 +186,5 @@
         startGame();
     </script>
 </body>
+
 </html>
