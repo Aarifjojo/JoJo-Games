@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
     <title>Blogs | JoJo Games</title>
     <meta name="description" content="Explore a wide range of topics including online earning, AI tools, gaming news, learning resources, and free courses. Stay informed and inspired with JoJo Games Blogs!">
     <meta name="keywords" content="online earning, AI prompts, AI images, AI videos, AI news, gaming news, learning, free courses, jojo games blog">
     <meta name="author" content="JoJo Games">
-
+    <meta name="robots" content="index, follow">
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Blogs | JoJo Games">
     <meta property="og:description" content="Explore a wide range of topics including online earning, AI tools, gaming news, learning resources, and free courses. Stay informed and inspired with JoJo Games Blogs!">
     <meta property="og:image" content="https://yourwebsite.com/assets/images/blog-preview.jpg">
     <meta property="og:url" content="https://yourwebsite.com/blogs.html">
     <meta property="og:type" content="article">
-
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Blogs | JoJo Games">
     <meta name="twitter:description" content="Explore a wide range of topics including online earning, AI tools, gaming news, learning resources, and free courses. Stay informed and inspired with JoJo Games Blogs!">
     <meta name="twitter:image" content="https://yourwebsite.com/assets/images/blog-preview.jpg">
-
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4W6FJ7ZCV"></script>
     <script>
@@ -29,8 +28,12 @@
         gtag('js', new Date());
         gtag('config', 'G-T4W6FJ7ZCV');
     </script>
-
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <style>
+        /* Google Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         /* General Styles */
         * {
             margin: 0;
@@ -50,24 +53,90 @@
         .nav-bar {
             background: #222;
             padding: 15px;
-            text-align: center;
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .nav-bar a {
+        .nav-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
             color: #f8b400;
             text-decoration: none;
-            margin: 0 15px;
+        }
+
+        .nav-bar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar .menu a {
+            color: #f8b400;
+            text-decoration: none;
             font-size: 18px;
             font-weight: 600;
             transition: color 0.3s ease-in-out;
         }
 
-        .nav-bar a:hover {
+        .nav-bar .menu a:hover {
             color: #ff5733;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: #f8b400;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            padding: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu a {
+            color: #f8b400;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .mobile-menu a:hover {
+            color: #ff5733;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar .menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
         }
 
         /* Header Section */
@@ -156,7 +225,7 @@
         }
 
         /* Footer Section */
-        .site-footer {
+        footer {
             margin-top: 40px;
             padding: 15px;
             background: #222;
@@ -169,7 +238,6 @@
             .blog-card {
                 width: 90%;
             }
-
             .categories {
                 flex-direction: column;
                 align-items: center;
@@ -180,11 +248,23 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-bar">
+        <a href="index.html" class="logo">JoJo Games</a>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="menu">
+            <a href="index.html">All Games</a>
+            <a href="service.html">Service</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="about.html">About Me</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
-    </nav>
+    </div>
 
     <!-- Header Section -->
     <header>
@@ -192,27 +272,18 @@
         <p>Stay informed and inspired with blogs about online earning, AI tools, gaming news, learning resources, and more!</p>
     </header>
 
-    <!-- Blog Categories -->
-    <section class="categories">
-        <a href="#earning" class="category-button">Online Earning</a>
-        <a href="#ai-tools" class="category-button">AI Tools</a>
-        <a href="#gaming-news" class="category-button">Gaming News</a>
-        <a href="#learning" class="category-button">Learning</a>
-    </section>
-
     <!-- Blog Cards -->
     <main class="blog-container">
         <!-- Online Earning -->
         <div id="earning" class="blog-card">
             <h2>Top Ways to Earn Money Online in 2025</h2>
             <p>Discover the best platforms and strategies to earn money online, from freelancing to affiliate marketing.</p>
-            <a href="blogs/online-earning.html" class="read-more">Read More</a>
+            <a href="Blogs/online-earning.html" class="read-more">Read More</a>
         </div>
-
         <div class="blog-card">
             <h2>How to Start a Successful Blog</h2>
             <p>Learn how to create and monetize your own blog with step-by-step guidance and expert tips.</p>
-            <a href="blogs/start-blog.html" class="read-more">Read More</a>
+            <a href="Blogs/start-blog.html" class="read-more">Read More</a>
         </div>
 
         <!-- AI Tools -->
@@ -221,49 +292,57 @@
             <p>Unlock your creativity with these powerful AI prompts for writing stories, scripts, and more.</p>
             <a href="Blogs/ai-prompts-writing/ai-prompts-writing.html" class="read-more">Read More</a>
         </div>
-
         <div class="blog-card">
             <h2>Create Stunning AI-Generated Images</h2>
             <p>Explore tools like DALL·E and MidJourney to generate professional-quality AI images for your projects.</p>
-            <a href="blogs/ai-generated-images.html" class="read-more">Read More</a>
+            <a href="Blogs/ai-generated-images/ai-generated-images.html" class="read-more">Read More</a>
         </div>
-
         <div class="blog-card">
             <h2>Make Engaging AI Videos for Free</h2>
             <p>Use AI tools like Synthesia and Runway ML to create high-quality videos without any prior experience.</p>
-            <a href="blogs/ai-videos.html" class="read-more">Read More</a>
+            <a href="Blogs/ai-videos.html" class="read-more">Read More</a>
         </div>
 
         <!-- Gaming News -->
         <div id="gaming-news" class="blog-card">
             <h2>Latest Trends in the Gaming Industry</h2>
             <p>Stay updated with the latest trends, including cloud gaming, VR experiences, and AI-driven gameplay.</p>
-            <a href="blogs/gaming-trends.html" class="read-more">Read More</a>
+            <a href="Blogs/gaming-trends.html" class="read-more">Read More</a>
         </div>
-
         <div class="blog-card">
             <h2>New Game Releases You Can't Miss</h2>
             <p>Discover the most anticipated game releases and updates from popular developers worldwide.</p>
-            <a href="blogs/new-game-releases.html" class="read-more">Read More</a>
+            <a href="Blogs/new-game-releases.html" class="read-more">Read More</a>
         </div>
 
         <!-- Learning -->
         <div id="learning" class="blog-card">
             <h2>Free Online Courses to Boost Your Skills</h2>
             <p>Find the best free courses to learn coding, design, marketing, and more from platforms like Coursera and Udemy.</p>
-            <a href="blogs/free-courses.html" class="read-more">Read More</a>
+            <a href="Blogs/free-courses.html" class="read-more">Read More</a>
         </div>
-
         <div class="blog-card">
             <h2>How to Learn Anything Faster with AI</h2>
             <p>Use AI-powered tools to accelerate your learning process and master new skills in record time.</p>
-            <a href="blogs/ai-learning-tools.html" class="read-more">Read More</a>
+            <a href="Blogs/ai-learning-tools.html" class="read-more">Read More</a>
         </div>
     </main>
 
     <!-- Footer Section -->
-    <footer class="site-footer">
+    <footer>
         <p>&copy; 2025 JoJo Games. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
 </body>
 </html>
