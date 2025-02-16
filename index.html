@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Primary Meta Tags -->
     <title>Play Free Online Games | JoJo Games - Best Browser Games</title>
     <meta name="description" content="Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads. Perfect for all ages!">
     <meta name="keywords" content="free online games, play games online, JoJo Games, tic-tac-toe, memory match, puzzle games, best browser games, animal guess game, click the box">
     <meta name="author" content="JoJo Games">
     <meta name="robots" content="index, follow">
-
     <!-- Open Graph Meta Tags (for social media sharing) -->
     <meta property="og:title" content="Play Free Online Games | JoJo Games - Best Browser Games">
     <meta property="og:description" content="Enjoy free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Play instantly without downloads. Perfect for all ages!">
-    <meta property="og:image" content="https://yourwebsite.com/preview-image.jpg">
-    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
+    <meta property="og:url" content="https://www.jojogames.xyz">
     <meta property="og:type" content="website">
-
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Play Free Online Games | JoJo Games">
     <meta name="twitter:description" content="Play fun, interactive, and free online games at JoJo Games. Enjoy Tic-Tac-Toe, Memory Match, Animal Guess, and more!">
-    <meta name="twitter:image" content="https://yourwebsite.com/preview-image.jpg">
-
+    <meta name="twitter:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
     <!-- Schema Markup for Rich Results -->
     <script type="application/ld+json">
     {
@@ -31,16 +27,15 @@
         "@type": "Game",
         "name": "JoJo Games",
         "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
-        "url": "https://yourwebsite.com",
-        "image": "https://yourwebsite.com/preview-image.jpg",
+        "url": "https://www.jojogames.xyz",
+        "image": "https://www.jojogames.xyz/assets/images/preview-image.jpg",
         "publisher": {
             "@type": "Organization",
             "name": "JoJo Games",
-            "url": "https://yourwebsite.com"
+            "url": "https://www.jojogames.xyz"
         }
     }
     </script>
-
     <!-- Google Analytics & Tag Manager -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4W6FJ7ZCV"></script>
     <script>
@@ -49,10 +44,8 @@
         gtag('js', new Date());
         gtag('config', 'G-T4W6FJ7ZCV');
     </script>
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-
     <style>
         /* Google Font Import */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -76,37 +69,103 @@
         .nav-bar {
             background: #222;
             padding: 15px;
-            text-align: center;
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .nav-bar a {
+        .nav-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
             color: #f8b400;
             text-decoration: none;
-            margin: 0 15px;
+        }
+
+        .nav-bar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar .menu a {
+            color: #f8b400;
+            text-decoration: none;
             font-size: 18px;
             font-weight: 600;
             transition: color 0.3s ease-in-out;
         }
 
-        .nav-bar a:hover {
+        .nav-bar .menu a:hover {
             color: #ff5733;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: #f8b400;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            padding: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu a {
+            color: #f8b400;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .mobile-menu a:hover {
+            color: #ff5733;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar .menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+        }
+
         /* Header Section */
-        .site-header {
+        header {
             margin: 40px 0;
         }
 
-        .site-header h1 {
+        header h1 {
             font-size: 36px;
             color: #f8b400;
         }
 
-        .site-header p {
+        header p {
             font-size: 18px;
             margin-top: 10px;
             color: #ccc;
@@ -196,43 +255,38 @@
         }
 
         /* Footer Section */
-        .site-footer {
+        footer {
             margin-top: 40px;
             padding: 15px;
             background: #222;
             font-size: 14px;
             color: #bbb;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .game-list {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .game-card {
-                width: 90%;
-            }
-
-            .nav-bar a {
-                display: block;
-                margin: 10px 0;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-bar">
+        <a href="index.html" class="logo">JoJo Games</a>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="menu">
+            <a href="index.html">All Games</a>
+            <a href="service.html">Service</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="about.html">About Me</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
-    </nav>
+    </div>
 
     <!-- Header Section -->
-    <header class="site-header">
+    <header>
         <h1>Welcome to JoJo Games!</h1>
         <p>Your ultimate destination for fun and interactive games.</p>
     </header>
@@ -273,8 +327,20 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="site-footer">
+    <footer>
         <p>&copy; 2025 JoJo Games. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
 </body>
 </html>
