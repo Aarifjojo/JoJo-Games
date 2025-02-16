@@ -25,6 +25,7 @@
     <style>
         /* Google Font Import */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         /* General Styles */
         * {
             margin: 0;
@@ -32,46 +33,117 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+
         body {
             background-color: #121212;
             color: #fff;
             text-align: center;
             padding: 20px;
         }
+
         /* Navigation Bar */
         .nav-bar {
             background: #222;
             padding: 15px;
-            text-align: center;
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .nav-bar a {
+
+        .nav-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
             color: #f8b400;
             text-decoration: none;
-            margin: 0 15px;
+        }
+
+        .nav-bar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar .menu a {
+            color: #f8b400;
+            text-decoration: none;
             font-size: 18px;
             font-weight: 600;
             transition: color 0.3s ease-in-out;
         }
-        .nav-bar a:hover {
+
+        .nav-bar .menu a:hover {
             color: #ff5733;
         }
-        /* Header Section */
-        header {
-            margin: 40px 0;
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: #f8b400;
+            cursor: pointer;
         }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #222;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            padding: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu a {
+            color: #f8b400;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .mobile-menu a:hover {
+            color: #ff5733;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar .menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+        }
+
+        /* Header Section */
         header h1 {
             font-size: 36px;
             color: #f8b400;
+            margin-bottom: 20px;
         }
+
         header p {
             font-size: 18px;
-            margin-top: 10px;
             color: #ccc;
+            margin-bottom: 40px;
         }
+
         /* Service Content */
         .service-content {
             max-width: 800px;
@@ -79,27 +151,32 @@
             text-align: left;
             line-height: 1.6;
         }
+
         .service-content h2 {
             font-size: 28px;
             color: #ffcc00;
             margin-top: 30px;
             margin-bottom: 15px;
         }
+
         .service-content p {
             font-size: 16px;
             color: #bbb;
             margin-bottom: 15px;
         }
+
         .service-content ul {
             list-style: disc;
             margin-left: 20px;
             margin-bottom: 20px;
         }
+
         .service-content li {
             font-size: 16px;
             color: #bbb;
             margin-bottom: 10px;
         }
+
         .service-content blockquote {
             background: #222;
             padding: 20px;
@@ -108,42 +185,47 @@
             font-style: italic;
             color: #ccc;
         }
+
         .service-content a {
             color: #ff5733;
             text-decoration: none;
             font-weight: bold;
         }
+
         .service-content a:hover {
             text-decoration: underline;
         }
+
         /* Footer Section */
         footer {
-            text-align: center;
             margin-top: 40px;
             padding: 15px;
             background: #222;
             font-size: 14px;
             color: #bbb;
         }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 30px;
-            }
-            .service-content {
-                padding: 0 10px;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-bar">
+        <a href="index.html" class="logo">JoJo Games</a>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="menu">
+            <a href="index.html">All Games</a>
+            <a href="service.html">Service</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="about.html">About Me</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
-    </nav>
+    </div>
 
     <!-- Header Section -->
     <header>
@@ -239,5 +321,17 @@
     <footer>
         <p>&copy; 2025 JoJo Games. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
 </body>
 </html>
