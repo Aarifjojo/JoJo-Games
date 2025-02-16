@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
     <title>AI-Powered Creative Solutions – JoJo’s Block</title>
-    <meta name="description" content="Explore AI-powered creative services at JoJo’s Block, including image creation, music composition, video production, and content writing. Tailored solutions for personal, professional, and business needs.">
-    <meta name="keywords" content="AI services, AI image creation, AI music, AI videos, content writing, branding, JoJo’s Block">
+    <meta name="description" content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
+    <meta name="keywords" content="AI services, creative solutions, JoJo’s Block, AI-generated images, AI music, AI videos, content creation, jojogames.xyz">
     <meta name="author" content="JoJo Games">
     <meta name="robots" content="index, follow">
-    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AI-Powered Creative Solutions – JoJo’s Block">
-    <meta property="og:description" content="Explore AI-powered creative services at JoJo’s Block, including image creation, music composition, video production, and content writing. Tailored solutions for personal, professional, and business needs.">
-    <meta property="og:image" content="https://www.jojogames.xyz/assets/images/service-preview.jpg">
-    <meta property="og:url" content="https://www.jojogames.xyz/service.html">
+    <meta property="og:description" content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
+    <meta property="og:image" content="https://jojogames.xyz/assets/images/service-preview.jpg">
+    <meta property="og:url" content="https://jojogames.xyz/service.html">
     <meta property="og:type" content="website">
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI-Powered Creative Solutions – JoJo’s Block">
-    <meta name="twitter:description" content="Explore AI-powered creative services at JoJo’s Block, including image creation, music composition, video production, and content writing. Tailored solutions for personal, professional, and business needs.">
-    <meta name="twitter:image" content="https://www.jojogames.xyz/assets/images/service-preview.jpg">
+    <meta name="twitter:description" content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
+    <meta name="twitter:image" content="https://jojogames.xyz/assets/images/service-preview.jpg">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4DTGTEBSZY');
+    </script>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <style>
@@ -37,7 +45,7 @@
         body {
             background-color: #121212;
             color: #fff;
-            text-align: center;
+            line-height: 1.6;
             padding: 20px;
         }
 
@@ -132,77 +140,92 @@
         }
 
         /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
         header h1 {
             font-size: 36px;
             color: #f8b400;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         header p {
             font-size: 18px;
             color: #ccc;
-            margin-bottom: 40px;
         }
 
         /* Service Content */
         .service-content {
             max-width: 800px;
             margin: 0 auto;
-            text-align: left;
-            line-height: 1.6;
+            padding: 20px;
         }
 
         .service-content h2 {
             font-size: 28px;
             color: #ffcc00;
-            margin-top: 30px;
             margin-bottom: 15px;
         }
 
         .service-content p {
             font-size: 16px;
+            margin: 10px 0;
             color: #bbb;
-            margin-bottom: 15px;
         }
 
         .service-content ul {
             list-style: disc;
             margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .service-content li {
-            font-size: 16px;
             color: #bbb;
-            margin-bottom: 10px;
         }
 
-        .service-content blockquote {
-            background: #222;
+        .service-card {
+            background: #1e1e1e;
+            border-radius: 10px;
             padding: 20px;
-            border-left: 5px solid #f8b400;
-            margin: 20px 0;
-            font-style: italic;
-            color: #ccc;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .service-content a {
-            color: #ff5733;
+        .service-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255, 165, 0, 0.5);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff5733;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
         }
 
-        .service-content a:hover {
-            text-decoration: underline;
+        .cta-btn:hover {
+            background: #ff6b42;
         }
 
         /* Footer Section */
         footer {
+            text-align: center;
             margin-top: 40px;
             padding: 15px;
             background: #222;
             font-size: 14px;
             color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-content {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -237,57 +260,73 @@
     <main class="service-content">
         <h2>Explore Our Tailored Solutions</h2>
 
-        <h3>AI Image Creation Services</h3>
-        <ul>
-            <li><strong>AI-Generated Images:</strong> Stunning, high-quality visuals in diverse styles and themes.</li>
-            <li><strong>Custom Avatars:</strong> Unique social media avatars for Instagram, Twitter, LinkedIn, and more.</li>
-            <li><strong>Custom Greeting Cards:</strong> AI-designed birthday, festive, and thank-you cards.</li>
-            <li><strong>Book & Album Covers:</strong> Creative covers for eBooks, books, and music albums.</li>
-            <li><strong>Logos & Branding:</strong> AI-crafted logos and brand identity kits.</li>
-            <li><strong>YouTube Thumbnails:</strong> Click-worthy designs for video thumbnails.</li>
-            <li><strong>Personalized Birthday Images:</strong> Unique AI-generated birthday visuals.</li>
-            <li><strong>Image Upscaling:</strong> Enhance and upscale image quality with AI.</li>
-            <li><strong>Image Editing:</strong> Style changes, color correction, and more.</li>
-        </ul>
+        <!-- AI Image Creation Services -->
+        <div class="service-card">
+            <h3>AI Image Creation Services</h3>
+            <ul>
+                <li><strong>AI-Generated Images:</strong> Stunning visuals in diverse styles and themes.</li>
+                <li><strong>Custom Avatars:</strong> Unique social media avatars for Instagram, Twitter, LinkedIn, and more.</li>
+                <li><strong>Custom Greeting Cards:</strong> AI-designed birthday, festive, and thank-you cards.</li>
+                <li><strong>Book & Album Covers:</strong> Creative covers for eBooks, books, and music albums.</li>
+                <li><strong>Logos & Branding:</strong> AI-crafted logos and brand identity kits.</li>
+                <li><strong>YouTube Thumbnails:</strong> Click-worthy designs for video thumbnails.</li>
+                <li><strong>Personalized Birthday Images:</strong> Unique AI-generated birthday visuals.</li>
+                <li><strong>Image Upscaling:</strong> Enhance and upscale image quality with AI.</li>
+                <li><strong>Image Editing:</strong> Style changes, color correction, and more.</li>
+            </ul>
+        </div>
 
-        <h3>AI Music Services</h3>
-        <ul>
-            <li><strong>Personalized Birthday Songs:</strong> Custom AI-composed birthday tracks.</li>
-            <li><strong>Copyright-Free Music:</strong> High-quality AI music for commercial or personal use.</li>
-            <li><strong>Relaxation Tracks:</strong> Soothing ambient music for meditation or relaxation.</li>
-            <li><strong>YouTube Music:</strong> Custom tracks tailored for video creators.</li>
-            <li><strong>AI-Composed Songs:</strong> Original music for any occasion or theme.</li>
-        </ul>
+        <!-- AI Music Services -->
+        <div class="service-card">
+            <h3>AI Music Services</h3>
+            <ul>
+                <li><strong>Personalized Birthday Songs:</strong> Custom AI-composed birthday tracks.</li>
+                <li><strong>Copyright-Free Music:</strong> High-quality AI music for commercial or personal use.</li>
+                <li><strong>Relaxation Tracks:</strong> Soothing ambient music for meditation or relaxation.</li>
+                <li><strong>YouTube Music:</strong> Custom tracks tailored for video creators.</li>
+                <li><strong>AI-Composed Songs:</strong> Original music for any occasion or theme.</li>
+            </ul>
+        </div>
 
-        <h3>AI Video Services</h3>
-        <ul>
-            <li><strong>Short Video Creation:</strong> Perfect for social media or personal projects.</li>
-            <li><strong>Short Films:</strong> AI-assisted short movie production.</li>
-            <li><strong>Custom Video Creation:</strong> From explainer videos to montages, we’ve got you covered.</li>
-            <li><strong>Brand Ads:</strong> AI-generated advertisements with video and image assets.</li>
-            <li><strong>Video Intros/Outros:</strong> Professional branding intros and outros for videos.</li>
-        </ul>
+        <!-- AI Video Services -->
+        <div class="service-card">
+            <h3>AI Video Services</h3>
+            <ul>
+                <li><strong>Short Video Creation:</strong> Perfect for social media or personal projects.</li>
+                <li><strong>Short Films:</strong> AI-assisted short movie production.</li>
+                <li><strong>Custom Video Creation:</strong> From explainer videos to montages, we’ve got you covered.</li>
+                <li><strong>Brand Ads:</strong> AI-generated advertisements with video and image assets.</li>
+                <li><strong>Video Intros/Outros:</strong> Professional branding intros and outros for videos.</li>
+            </ul>
+        </div>
 
-        <h3>AI Content Services</h3>
-        <ul>
-            <li><strong>Custom Blogs & Articles:</strong> Niche-specific, audience-focused content.</li>
-            <li><strong>SEO-Optimized Content:</strong> Keyword-rich articles for better rankings.</li>
-            <li><strong>Content Rewriting:</strong> Improve existing content for quality and engagement.</li>
-            <li><strong>Copywriting:</strong> Catchy headlines, product descriptions, and ad copy.</li>
-            <li><strong>Editorial Refinement:</strong> Grammar, tone, and structure enhancement.</li>
-        </ul>
+        <!-- AI Content Services -->
+        <div class="service-card">
+            <h3>AI Content Services</h3>
+            <ul>
+                <li><strong>Custom Blogs & Articles:</strong> Niche-specific, audience-focused content.</li>
+                <li><strong>SEO-Optimized Content:</strong> Keyword-rich articles for better rankings.</li>
+                <li><strong>Content Rewriting:</strong> Improve existing content for quality and engagement.</li>
+                <li><strong>Copywriting:</strong> Catchy headlines, product descriptions, and ad copy.</li>
+                <li><strong>Editorial Refinement:</strong> Grammar, tone, and structure enhancement.</li>
+            </ul>
+        </div>
 
-        <h3>Specialized Services</h3>
-        <ul>
-            <li><strong>Promotional Campaigns:</strong> End-to-end AI-driven promotional design and strategy.</li>
-            <li><strong>Pinterest Pin Design:</strong> Beautiful, effective Pinterest graphics.</li>
-            <li><strong>Merchandising Art:</strong> AI-crafted designs for t-shirts, mugs, and more.</li>
-            <li><strong>Social Media Post Designs:</strong> Templates and posts for Instagram, Facebook, and Twitter.</li>
-            <li><strong>Event Posters:</strong> Creative posters for events and parties.</li>
-            <li><strong>Creative Collaborations:</strong> Partner with us for unique AI-driven projects.</li>
-        </ul>
+        <!-- Specialized Services -->
+        <div class="service-card">
+            <h3>Specialized Services</h3>
+            <ul>
+                <li><strong>Promotional Campaigns:</strong> End-to-end AI-driven promotional design and strategy.</li>
+                <li><strong>Pinterest Pin Design:</strong> Beautiful, effective Pinterest graphics.</li>
+                <li><strong>Merchandising Art:</strong> AI-crafted designs for t-shirts, mugs, and more.</li>
+                <li><strong>Social Media Post Designs:</strong> Templates and posts for Instagram, Facebook, and Twitter.</li>
+                <li><strong>Event Posters:</strong> Creative posters for events and parties.</li>
+                <li><strong>Creative Collaborations:</strong> Partner with us for unique AI-driven projects.</li>
+            </ul>
+        </div>
 
         <h2>Why Choose JoJo’s Block?</h2>
+        <p>We believe in delivering exceptional value through cutting-edge AI tools and tailored solutions:</p>
         <ul>
             <li><strong>Cutting-Edge AI Tools:</strong> Harness the latest technology for outstanding results.</li>
             <li><strong>Tailored Solutions:</strong> Services customized to meet your unique needs.</li>
@@ -295,31 +334,24 @@
             <li><strong>Proven Track Record:</strong> Satisfied clients and a growing portfolio.</li>
         </ul>
 
-        <h2>Key Features to Explore</h2>
-        <ul>
-            <li><strong>Portfolio Gallery:</strong> Browse samples of our past work.</li>
-            <li><strong>Service Bundles:</strong> Exclusive discounted packages for multiple services.</li>
-            <li><strong>Customer Testimonials:</strong> See what our happy clients have to say.</li>
-            <li><strong>Live Chat Support:</strong> Get answers to your questions in real time.</li>
-        </ul>
-
         <blockquote>
             "At JoJo’s Block, we’re dedicated to providing top-notch AI-driven creative solutions that make a difference. Whether you’re a content creator, entrepreneur, or artist, our services are here to elevate your projects."
         </blockquote>
 
-        <h2>Get Started with JoJo’s Block</h2>
-        <p><strong>Request a Quote:</strong> Tell us your project requirements, and we’ll provide a free quote.</p>
-        <p><strong>Start a Project:</strong> Ready to bring your vision to life? <a href="contact.html">Contact us today!</a></p>
-
-        <h2>FAQs</h2>
-        <p><strong>How long does it take to complete a project?</strong> Turnaround times vary by service but typically range from 1-7 days.</p>
-        <p><strong>What are the pricing options?</strong> We offer flexible pricing based on project scope. Contact us for custom quotes.</p>
-        <p><strong>Can I customize my order?</strong> Absolutely! Every service is tailored to meet your specific needs.</p>
+        <a href="#contact" class="cta-btn">Get Started Today</a>
     </main>
+
+    <!-- Contact Section -->
+    <section id="contact" class="service-content">
+        <h2>Get Started with JoJo’s Block</h2>
+        <p>Ready to bring your vision to life? Contact us today!</p>
+        <p><strong>Email:</strong> <a href="mailto:jojobusiness0101@gmail.com">jojobusiness0101@gmail.com</a></p>
+        <p><strong>Pinterest:</strong> <a href="https://in.pinterest.com/JoJosBlocks/" target="_blank">Follow Us on Pinterest</a></p>
+    </section>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 JoJo Games. All rights reserved.</p>
+        <p>&copy; 2025 JoJo Games. All rights reserved. Visit us at <a href="https://jojogames.xyz" style="color: #ff5733;">jojogames.xyz</a>.</p>
     </footer>
 
     <!-- JavaScript for Mobile Menu -->
