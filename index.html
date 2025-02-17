@@ -2,44 +2,44 @@
 <html lang="en">
 
 <head>
-    <!-- Meta Tags -->
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoJo Games Blogs | Stay Informed and Inspired</title>
 
-    <!-- Meta Description for SEO -->
+    <!-- Primary Meta Tags -->
+    <title>Play Free Online Games | JoJo Games - Best Browser Games</title>
     <meta name="description"
-        content="Stay informed and inspired with JoJo Games blogs about online earning, AI tools, gaming news, learning resources, and more.">
-
-    <!-- Meta Keywords for SEO -->
+        content="Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads. Perfect for all ages!">
     <meta name="keywords"
-        content="JoJo Games, blogs, AI tools, online earning, gaming news, learning resources, creative writing, AI-generated images">
+        content="free online games, play games online, JoJo Games, tic-tac-toe, memory match, puzzle games, best browser games, animal guess game, click the box">
+    <meta name="author" content="JoJo Games">
+    <meta name="robots" content="index, follow">
 
-    <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="JoJo Games Blogs | Stay Informed and Inspired">
-    <meta property="og:description"
-        content="Explore blogs about online earning, AI tools, gaming news, learning resources, and more at JoJo Games.">
-    <meta property="og:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
-    <meta property="og:url" content="https://www.jojogames.xyz/blogs.html">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JoJo Games Blogs | Stay Informed and Inspired">
-    <meta name="twitter:description"
-        content="Stay informed and inspired with JoJo Games blogs about online earning, AI tools, gaming news, learning resources, and more.">
-    <meta name="twitter:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
-
-    <!-- Canonical URL to Avoid Duplicate Content Issues -->
-    <link rel="canonical" href="https://www.jojogames.xyz/blogs.html">
-
-    <!-- Google Font Import -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.jojogames.xyz">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" href="image/jojogamesimg.png" type="image/x-icon">
 
-    <!-- Structured Data (JSON-LD) for SEO -->
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="Play Free Online Games | JoJo Games - Best Browser Games">
+    <meta property="og:description"
+        content="Enjoy free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Play instantly without downloads. Perfect for all ages!">
+    <meta property="og:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
+    <meta property="og:url" content="https://www.jojogames.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="JoJo Games">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Play Free Online Games | JoJo Games">
+    <meta name="twitter:description"
+        content="Play fun, interactive, and free online games at JoJo Games. Enjoy Tic-Tac-Toe, Memory Match, Animal Guess, and more!">
+    <meta name="twitter:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
+    <meta name="twitter:site" content="@JoJoBlock_">
+
+    <!-- Schema Markup for Rich Results -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -68,6 +68,9 @@
 
     <!-- Styles -->
     <style>
+        /* Google Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         /* General Styles */
         * {
             margin: 0;
@@ -78,15 +81,15 @@
 
         body {
             background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
+            color: #fff;
+            text-align: center;
             padding: 20px;
         }
 
         /* Navigation Bar */
         .nav-bar {
             background: #222;
-            padding: 15px;
+            padding: 10px 15px;
             position: sticky;
             top: 0;
             width: 100%;
@@ -100,6 +103,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            /* Space between logo and text */
         }
 
         .nav-bar .logo img {
@@ -121,7 +125,7 @@
         .nav-bar .menu a {
             color: #f8b400;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             transition: color 0.3s ease-in-out;
         }
@@ -185,58 +189,64 @@
 
         /* Header Section */
         header {
-            text-align: center;
-            margin-bottom: 40px;
+            margin: 40px 0;
         }
 
         header h1 {
             font-size: 36px;
             color: #f8b400;
-            margin-bottom: 10px;
         }
 
         header p {
             font-size: 18px;
+            margin-top: 10px;
             color: #ccc;
         }
 
-        /* Blog Content */
-        .blog-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        /* Game List Container */
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .blog-card {
-            background: #2a2a2a;
+        /* Individual Game Cards */
+        .game-card {
+            background: #1e1e1e;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            width: 280px;
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .blog-card:hover {
-            transform: scale(1.02);
+        .game-card:hover {
+            transform: scale(1.05);
             box-shadow: 0 5px 20px rgba(255, 165, 0, 0.5);
         }
 
-        .blog-card h2 {
-            font-size: 28px;
+        .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .game-card h2 {
+            font-size: 22px;
             color: #ffcc00;
-            margin-bottom: 15px;
         }
 
-        .blog-card p {
-            font-size: 18px;
+        .game-card p {
+            font-size: 16px;
+            margin: 10px 0;
             color: #bbb;
-            margin-bottom: 15px;
         }
 
-        .blog-card a {
+        /* Play Button */
+        .play-button {
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
@@ -248,13 +258,43 @@
             transition: background 0.3s ease-in-out;
         }
 
-        .blog-card a:hover {
+        .play-button:hover {
             background: #ff6b42;
+        }
+
+        /* About Section */
+        .about-games {
+            margin-top: 50px;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .about-games h2 {
+            color: #ffcc00;
+            font-size: 28px;
+        }
+
+        .about-games p {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #ccc;
+        }
+
+        .about-games ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-games ul li {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #bbb;
         }
 
         /* Footer Section */
         footer {
-            text-align: center;
             margin-top: 40px;
             padding: 15px;
             background: #222;
@@ -272,7 +312,7 @@
             <span>JoJo Games</span>
         </div>
         <div class="menu">
-            <a href="index.html">All Games</a>
+            <a href="#all-games">All Games</a>
             <a href="service.html">Service</a>
             <a href="blogs.html">Blogs</a>
             <a href="about.html">About Me</a>
@@ -282,7 +322,7 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <a href="index.html">All Games</a>
+        <a href="#all-games">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
@@ -290,84 +330,53 @@
 
     <!-- Header -->
     <header>
-        <h1>JoJo Games Blogs</h1>
-        <p>Stay informed and inspired with blogs about online earning, AI tools, gaming news, learning resources, and
-            more!</p>
+        <h1>Welcome to JoJo Games!</h1>
+        <p>Your ultimate destination for fun and interactive games.</p>
     </header>
 
-
-    <!-- Blog Cards -->
-    <main class="blog-container">
-        <!-- Blog Card 1 -->
-        <!-- <div class="blog-card">
-            <h2>Top Ways to Earn Money Online in 2025</h2>
-            <p>Discover the best platforms and strategies to earn money online, from freelancing to affiliate marketing.
-            </p>
-            <a href="Blogs/online-earning/online-earning.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 2 -->
-        <!-- <div class="blog-card">
-            <h2>How to Start a Successful Blog</h2>
-            <p>Learn how to create and monetize your own blog with step-by-step guidance and expert tips.</p>
-            <a href="Blogs/start-blog/start-blog.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 3 -->
-        <div class="blog-card">
-            <h2>Best AI Prompts for Creative Writing</h2>
-            <p>Unlock your creativity with these powerful AI prompts for writing stories, scripts, and more.</p>
-            <a href="Blogs/ai-prompts-writing/ai-prompts-writing.html" class="read-more">Read More</a>
+    <!-- Game List -->
+    <div class="game-list">
+        <div class="game-card">
+            <img src="image/animal-guess-game-img.jpg" alt="Animal Guess Game">
+            <h2>Animal Guess Game</h2>
+            <p>Find the hidden animal in the grid before your attempts run out! Test your guessing skills.</p>
+            <a href="games/animal-guess-game.html" class="play-button">Play Now</a>
         </div>
-
-        <!-- Blog Card 4 -->
-        <div class="blog-card">
-            <h2>Create Stunning AI-Generated Images</h2>
-            <p>Explore tools like DALL·E and MidJourney to generate professional-quality AI images for your projects.
-            </p>
-            <a href="Blogs/ai-generated-images/ai-generated-images.html" class="read-more">Read More</a>
+        <div class="game-card">
+            <img src="image/memory-match-img.jpg" alt="Memory Match Game">
+            <h2>Memory Match</h2>
+            <p>Boost your memory by matching pairs of emojis in this fun puzzle game.</p>
+            <a href="games/memory-match-game.html" class="play-button">Play Now</a>
         </div>
-
-        <!-- Blog Card 5 -->
-        <!-- <div class="blog-card">
-            <h2>Make Engaging AI Videos for Free</h2>
-            <p>Use AI tools like Synthesia and Runway ML to create high-quality videos without any prior experience.</p>
-            <a href="Blogs/ai-videos/ai-videos.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 6 -->
-        <!-- <div class="blog-card">
-            <h2>Latest Trends in the Gaming Industry</h2>
-            <p>Stay updated with the latest trends, including cloud gaming, VR experiences, and AI-driven gameplay.</p>
-            <a href="Blogs/gaming-trends/gaming-trends.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 7 -->
-        <!-- <div class="blog-card">
-            <h2>New Game Releases You Can't Miss</h2>
-            <p>Discover the most anticipated game releases and updates from popular developers worldwide.</p>
-            <a href="Blogs/new-game-releases/new-game-releases.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 8 -->
-        <!-- <div class="blog-card">
-            <h2>Free Online Courses to Boost Your Skills</h2>
-            <p>Find the best free courses to learn coding, design, marketing, and more from platforms like Coursera and Udemy.</p>
-            <a href="Blogs/free-courses/free-courses.html" class="read-more">Read More</a>
-        </div> -->
-
-        <!-- Blog Card 9 -->
-        <div class="blog-card">
-            <h2>How to Learn Anything Faster with AI</h2>
-            <p>Use AI-powered tools to accelerate your learning process and master new skills in record time.</p>
-            <a href="Blogs/ai-learning-tools/ai-learning-tools.html" class="read-more">Read More</a>
+        <div class="game-card">
+            <img src="image/tic-tac-toe-img.jpg" alt="Tic-Tac-Toe Game">
+            <h2>Tic-Tac-Toe Online</h2>
+            <p>Play the classic Tic-Tac-Toe game against JoJo (AI). Can you win?</p>
+            <a href="games/tic-tac-toe-game.html" class="play-button">Play Now</a>
         </div>
-    </main>
+        <div class="game-card">
+            <img src="image/click-the-box-img.png" alt="Click the Box Game">
+            <h2>Click the Box</h2>
+            <p>Click on the moving box as many times as you can before time runs out! Improve your reaction speed.</p>
+            <a href="games/click-the-box-game.html" class="play-button">Play Now</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-games">
+        <h2>About These Games</h2>
+        <p>JoJo Games brings you a collection of engaging and fun online games, perfect for players of all ages. Whether
+            you enjoy puzzle games, strategy challenges, or quick reflex tests, we have something for you!</p>
+        <ul>
+            <li><strong>100% Free to Play:</strong> No downloads or sign-ups required.</li>
+            <li><strong>Fun for All Ages:</strong> Games suitable for kids and adults.</li>
+            <li><strong>Brain-Boosting Challenges:</strong> Improve memory, reflexes, and logic.</li>
+        </ul>
+    </div>
 
     <!-- Footer -->
     <footer>
-        © 2025 JoJo Games. All rights reserved. Visit us at <a href="https://www.jojogames.xyz"
-            style="color: #f8b400;">jojogames.xyz</a>.
+        © 2025 JoJo Games. All rights reserved.
     </footer>
 
     <!-- JavaScript for Mobile Menu Toggle -->
