@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
     <title>About JoJo Games & JoJo's Block | Your Ultimate Tech Destination</title>
-    <meta name="description"
-        content="Learn about JoJo Games and JoJo's Block, a platform dedicated to fun, learning, and innovation. Explore AI tools, play free games, and discover creative insights to simplify technology and life.">
-    <meta name="keywords"
-        content="JoJo Games, JoJo's Block, AI tools, free games, tech blog, stress relief, creative insights">
-    <meta name="author" content="JoJo Games">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph Meta Tags (for social media sharing) -->
+
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Learn about JoJo Games and JoJo's Block, your ultimate destination for fun, learning, and innovation. Explore AI-powered tools, games, blogs, and creative solutions.">
+
+    <!-- Meta Keywords for SEO -->
+    <meta name="keywords" content="JoJo Games, JoJo's Block, AI tools, online games, tech blogs, creative solutions, innovation, gaming, technology">
+
+    <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="About JoJo Games & JoJo's Block | Your Ultimate Tech Destination">
-    <meta property="og:description"
-        content="Learn about JoJo Games and JoJo's Block, a platform dedicated to fun, learning, and innovation. Explore AI tools, play free games, and discover creative insights to simplify technology and life.">
-    <meta property="og:image" content="https://www.jojogames.xyz/assets/images/about-preview.jpg">
+    <meta property="og:description" content="Discover the story behind JoJo Games and JoJo's Block, where creativity meets technology. Explore AI-powered tools, games, and resources to learn, grow, and innovate.">
+    <meta property="og:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
     <meta property="og:url" content="https://www.jojogames.xyz/about.html">
     <meta property="og:type" content="website">
-    <!-- Twitter Meta Tags -->
+
+    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About JoJo Games & JoJo's Block | Your Ultimate Tech Destination">
-    <meta name="twitter:description"
-        content="Learn about JoJo Games and JoJo's Block, a platform dedicated to fun, learning, and innovation. Explore AI tools, play free games, and discover creative insights to simplify technology and life.">
-    <meta name="twitter:image" content="https://www.jojogames.xyz/assets/images/about-preview.jpg">
+    <meta name="twitter:description" content="Explore JoJo Games and JoJo's Block, your go-to platform for AI-powered tools, games, blogs, and creative solutions. Perfect for learning, entertainment, and inspiration.">
+    <meta name="twitter:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="https://www.jojogames.xyz/about.html">
+
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <style>
-        /* Google Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "JoJo Games",
+        "url": "https://www.jojogames.xyz",
+        "logo": "https://www.jojogames.xyz/image/jojogamesimg.png",
+        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
+        "sameAs": [
+            "https://twitter.com/JoJoBlock_",
+            "https://www.facebook.com/profile.php?id=61569599862994",
+            "https://www.pinterest.com/JoJosBlocks",
+            "https://www.youtube.com/@JoJoPunk"
+        ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4DTGTEBSZY');
+    </script>
+
+    <!-- Styles -->
+    <style>
         /* General Styles */
         * {
             margin: 0;
@@ -41,8 +73,8 @@
 
         body {
             background-color: #121212;
-            color: #fff;
-            text-align: center;
+            color: #ffffff;
+            line-height: 1.6;
             padding: 20px;
         }
 
@@ -60,10 +92,20 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -138,74 +180,63 @@
 
         /* Header Section */
         header {
-            margin: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         header h1 {
             font-size: 36px;
             color: #f8b400;
+            margin-bottom: 10px;
         }
 
         header p {
             font-size: 18px;
-            margin-top: 10px;
             color: #ccc;
         }
 
         /* About Content */
         .about-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            text-align: left;
-            line-height: 1.6;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
         .about-content h2 {
             font-size: 28px;
             color: #ffcc00;
-            margin-top: 30px;
             margin-bottom: 15px;
         }
 
         .about-content p {
-            font-size: 16px;
+            font-size: 18px;
             color: #bbb;
-            margin-bottom: 15px;
-        }
-
-        .about-content ul {
-            list-style: disc;
-            margin-left: 20px;
             margin-bottom: 20px;
         }
 
-        .about-content li {
-            font-size: 16px;
-            color: #bbb;
-            margin-bottom: 10px;
-        }
-
-        .about-content blockquote {
-            background: #222;
-            padding: 20px;
-            border-left: 5px solid #f8b400;
-            margin: 20px 0;
-            font-style: italic;
-            color: #ccc;
-        }
-
-        .about-content a {
-            color: #ff5733;
+        /* Call-to-Action Button */
+        .cta-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff5733;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
         }
 
-        .about-content a:hover {
-            text-decoration: underline;
+        .cta-btn:hover {
+            background: #ff6b42;
         }
 
         /* Footer Section */
         footer {
+            text-align: center;
             margin-top: 40px;
             padding: 15px;
             background: #222;
@@ -214,82 +245,78 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Navigation Bar -->
-    <nav class="nav-bar">
-        <a href="index.html" class="logo">JoJo Games</a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="image/jojogamesimg.png" alt="JoJo Games Logo">
+            <span>JoJo Games</span>
+        </div>
         <div class="menu">
             <a href="index.html">All Games</a>
             <a href="service.html">Service</a>
             <a href="blogs.html">Blogs</a>
             <a href="about.html">About Me</a>
         </div>
-    </nav>
+        <div class="hamburger">&#9776;</div>
+    </div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu">
         <a href="index.html">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
     </div>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <h1>About JoJo Games & JoJo's Block</h1>
         <p>Your ultimate destination for fun, learning, and innovation.</p>
     </header>
 
     <!-- About Content -->
-    <main class="about-content">
+    <div class="about-content">
         <h2>Welcome to JoJo Games and JoJo's Block!</h2>
-        <p>Hi there! I’m JoJo, the creator behind this vibrant digital space. With a passion for innovation and a
-            mission to simplify complex topics, I’ve built JoJo Games and JoJo's Block to bring you the latest and
-            greatest in the world of AI, technology, gaming, and beyond.</p>
+        <p>
+            Hi there! I’m JoJo, the creator behind this vibrant digital space. With a passion for innovation and a mission to simplify complex topics, I’ve built JoJo Games and JoJo's Block to bring you the latest and greatest in the world of AI, technology, gaming, and beyond.
+        </p>
 
         <h2>What is JoJo Games?</h2>
-        <p>JoJo Games is your go-to platform for fun, interactive, and stress-free online games. Whether you’re looking
-            to unwind after a long day or challenge your brain with puzzles, our collection of games is designed to
-            entertain and engage players of all ages. Here’s how JoJo Games helps:</p>
+        <p>
+            JoJo Games is your go-to platform for fun, interactive, and stress-free online games. Whether you’re looking to unwind after a long day or challenge your brain with puzzles, our collection of games is designed to entertain and engage players of all ages. Here’s how JoJo Games helps:
+        </p>
         <ul>
             <li><strong>Free to Play:</strong> No downloads, no sign-ups—just pure fun!</li>
             <li><strong>Stress Relief:</strong> Our games are perfect for taking a break and relaxing.</li>
-            <li><strong>Brain Boosting:</strong> From memory challenges to quick reflex tests, our games help sharpen
-                your mind.</li>
-            <li><strong>Friendly for All Ages:</strong> Whether you’re a kid or an adult, there’s something for
-                everyone.</li>
+            <li><strong>Brain Boosting:</strong> From memory challenges to quick reflex tests, our games help sharpen your mind.</li>
+            <li><strong>Friendly for All Ages:</strong> Whether you’re a kid or an adult, there’s something for everyone.</li>
         </ul>
 
         <h2>What is JoJo's Block?</h2>
-        <p>JoJo's Block is more than just a blog—it’s a hub for learning, creativity, and inspiration. Here’s what we
-            explore:</p>
+        <p>
+            JoJo's Block is more than just a blog—it’s a hub for learning, creativity, and inspiration. Here’s what we explore:
+        </p>
         <ul>
-            <li><strong>✨ AI Wonders:</strong> Dive into groundbreaking AI news, stunning AI-generated images, videos,
-                and creative prompts.</li>
-            <li><strong>💡 Learn & Grow:</strong> Simplify AI concepts, uncover tips for leveraging AI in everyday life,
-                and discover strategies to boost your income with AI tools.</li>
-            <li><strong>🌐 Tech & Trends:</strong> Stay updated with the latest tech advancements, social media
-                insights, and essential updates shaping our digital world.</li>
-            <li><strong>🚀 Creative Insights:</strong> From tutorials to creative ideas, we empower tech enthusiasts,
-                creators, and learners alike.</li>
+            <li><strong>AI Wonders:</strong> Dive into groundbreaking AI news, stunning AI-generated images, videos, and creative prompts.</li>
+            <li><strong>Learn & Grow:</strong> Simplify AI concepts, uncover tips for leveraging AI in everyday life, and discover strategies to boost your income with AI tools.</li>
+            <li><strong>Tech & Trends:</strong> Stay updated with the latest tech advancements, social media insights, and essential updates shaping our digital world.</li>
+            <li><strong>Creative Insights:</strong> From tutorials to creative ideas, we empower tech enthusiasts, creators, and learners alike.</li>
         </ul>
 
         <h2>Why JoJo's Block?</h2>
-        <p>We believe in making technology approachable, accessible, and fun for everyone. Whether you’re a tech-savvy
-            enthusiast, a curious beginner, or a professional looking for insights, JoJo's Block is here to inform,
-            inspire, and innovate.</p>
+        <p>
+            We believe in making technology approachable, accessible, and fun for everyone. Whether you’re a tech-savvy enthusiast, a curious beginner, or a professional looking for insights, JoJo's Block is here to inform, inspire, and innovate.
+        </p>
 
         <blockquote>
-            "Artificial Intelligence is not just a tool; it's a reflection of human ingenuity and the limitless
-            potential of technology. It empowers us to analyze the unimaginable, solve the unsolvable, and create the
-            unthinkable. AI is the bridge between ideas and action, a partner in progress, and a catalyst for
-            innovation."
+            "Artificial Intelligence is not just a tool; it's a reflection of human ingenuity and the limitless potential of technology. It empowers us to analyze the unimaginable, solve the unsolvable, and create the unthinkable. AI is the bridge between ideas and action, a partner in progress, and a catalyst for innovation."
         </blockquote>
 
         <h2>How This Site Helps People</h2>
-        <p>JoJo Games and JoJo's Block are designed to provide value in multiple ways:</p>
+        <p>
+            JoJo Games and JoJo's Block are designed to provide value in multiple ways:
+        </p>
         <ul>
             <li><strong>Entertainment:</strong> Free games to keep you entertained and relaxed.</li>
             <li><strong>Education:</strong> Blogs and resources to help you learn about AI, technology, and more.</li>
@@ -297,28 +324,29 @@
             <li><strong>Community:</strong> A place where like-minded individuals can connect and share knowledge.</li>
         </ul>
 
-        <h2>Thank You for Being Here</h2>
-        <p>Thank you for being a part of this journey. Together, let’s explore the future and transform challenges into
-            opportunities. Whether you’re here to play, learn, or grow, JoJo Games and JoJo's Block are here to support
-            you every step of the way.</p>
-    </main>
+        <p>
+            Thank you for being a part of this journey. Together, let’s explore the future and transform challenges into opportunities. Whether you’re here to play, learn, or grow, JoJo Games and JoJo's Block are here to support you every step of the way.
+        </p>
+    </div>
 
-    <!-- Footer Section -->
+    <!-- Call-to-Action -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="mailto:jojobusiness0101@gmail.com" class="cta-btn">Contact Us Today</a>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 JoJo Games. All rights reserved.</p>
+        © 2025 JoJo Games. All rights reserved. Visit us at <a href="https://www.jojogames.xyz" style="color: #f8b400;">jojogames.xyz</a>.
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
-        }
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
     </script>
 </body>
-
 </html>
