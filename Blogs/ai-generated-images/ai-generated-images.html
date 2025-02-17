@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
     <title>AI Generated Images | JoJo Games</title>
+
+    <!-- Meta Description for SEO -->
     <meta name="description" content="Explore the world of AI-generated images at jojogames.xyz and learn how to create stunning visuals using tools like DALL·E, MidJourney, and more. Perfect for designers, marketers, and creatives.">
+
+    <!-- Meta Keywords for SEO -->
     <meta name="keywords" content="AI generated images, DALL·E, MidJourney, AI art, creative tools, jojogames.xyz">
-    <meta name="author" content="JoJo Games">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph Meta Tags -->
+
+    <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="AI Generated Images | JoJo Games">
     <meta property="og:description" content="Explore the world of AI-generated images at jojogames.xyz and learn how to create stunning visuals using tools like DALL·E, MidJourney, and more. Perfect for designers, marketers, and creatives.">
     <meta property="og:image" content="https://jojogames.xyz/assets/images/ai-images-preview.jpg">
     <meta property="og:url" content="https://jojogames.xyz/Blogs/ai-generated-images.html">
     <meta property="og:type" content="website">
-    <!-- Twitter Meta Tags -->
+
+    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Generated Images | JoJo Games">
     <meta name="twitter:description" content="Explore the world of AI-generated images at jojogames.xyz and learn how to create stunning visuals using tools like DALL·E, MidJourney, and more. Perfect for designers, marketers, and creatives.">
     <meta name="twitter:image" content="https://jojogames.xyz/assets/images/ai-images-preview.jpg">
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="https://jojogames.xyz/Blogs/ai-generated-images.html">
+
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "JoJo Games",
+        "url": "https://www.jojogames.xyz",
+        "logo": "https://www.jojogames.xyz/image/jojogamesimg.png",
+        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
+        "sameAs": [
+            "https://twitter.com/JoJoBlock_",
+            "https://www.facebook.com/profile.php?id=61569599862994",
+            "https://www.pinterest.com/JoJosBlocks",
+            "https://www.youtube.com/@JoJoPunk"
+        ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
     <script>
@@ -28,12 +60,9 @@
         gtag('js', new Date());
         gtag('config', 'G-4DTGTEBSZY');
     </script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <style>
-        /* Google Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+    <!-- Styles -->
+    <style>
         /* General Styles */
         * {
             margin: 0;
@@ -44,7 +73,7 @@
 
         body {
             background-color: #121212;
-            color: #fff;
+            color: #ffffff;
             line-height: 1.6;
             padding: 20px;
         }
@@ -63,10 +92,20 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -226,16 +265,19 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="nav-bar">
-        <a href="https://www.jojogames.xyz/index.html" class="logo">JoJo Games</a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="../image/jojogamesimg.png" alt="JoJo Games Logo">
+            <span>JoJo Games</span>
+        </div>
         <div class="menu">
             <a href="https://www.jojogames.xyz/index.html">All Games</a>
             <a href="https://www.jojogames.xyz/service.html">Service</a>
             <a href="https://www.jojogames.xyz/blogs.html">Blogs</a>
             <a href="https://www.jojogames.xyz/about.html">About Me</a>
         </div>
-    </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
@@ -280,6 +322,13 @@
             <p>Compare the strengths and limitations of AI-generated art versus traditional art techniques.</p>
             <a href="ai-art-vs-traditional.html" class="read-more">Read More</a>
         </div>
+
+        <!-- Blog Post 5 -->
+        <div class="blog-card">
+            <h2>Custom Avatars and Branding with AI</h2>
+            <p>Create unique social media avatars, logos, and branding materials using AI tools.</p>
+            <a href="custom-avatars-branding.html" class="read-more">Read More</a>
+        </div>
     </main>
 
     <!-- Footer Section -->
@@ -287,15 +336,11 @@
         <p>&copy; 2025 JoJo Games. All rights reserved. Visit us at <a href="https://jojogames.xyz" style="color: #ff5733;">jojogames.xyz</a>.</p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
         function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("active");
         }
     </script>
 </body>
