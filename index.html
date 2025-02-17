@@ -1,51 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Primary Meta Tags -->
     <title>Play Free Online Games | JoJo Games - Best Browser Games</title>
-    <meta name="description" content="Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads. Perfect for all ages!">
-    <meta name="keywords" content="free online games, play games online, JoJo Games, tic-tac-toe, memory match, puzzle games, best browser games, animal guess game, click the box">
+    <meta name="description"
+        content="Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads. Perfect for all ages!">
+    <meta name="keywords"
+        content="free online games, play games online, JoJo Games, tic-tac-toe, memory match, puzzle games, best browser games, animal guess game, click the box">
     <meta name="author" content="JoJo Games">
     <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.jojogames.xyz">
+
+    <!-- Favicon -->
+    <link rel="icon" href="image/jojogamesimg.png" type="image/x-icon">
+
     <!-- Open Graph Meta Tags (for social media sharing) -->
     <meta property="og:title" content="Play Free Online Games | JoJo Games - Best Browser Games">
-    <meta property="og:description" content="Enjoy free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Play instantly without downloads. Perfect for all ages!">
+    <meta property="og:description"
+        content="Enjoy free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Play instantly without downloads. Perfect for all ages!">
     <meta property="og:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
     <meta property="og:url" content="https://www.jojogames.xyz">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="JoJo Games">
+    <meta property="og:locale" content="en_US">
+
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Play Free Online Games | JoJo Games">
-    <meta name="twitter:description" content="Play fun, interactive, and free online games at JoJo Games. Enjoy Tic-Tac-Toe, Memory Match, Animal Guess, and more!">
+    <meta name="twitter:description"
+        content="Play fun, interactive, and free online games at JoJo Games. Enjoy Tic-Tac-Toe, Memory Match, Animal Guess, and more!">
     <meta name="twitter:image" content="https://www.jojogames.xyz/assets/images/preview-image.jpg">
+    <meta name="twitter:site" content="@JoJoBlock_">
+
     <!-- Schema Markup for Rich Results -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Game",
+        "@type": "Organization",
         "name": "JoJo Games",
-        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
         "url": "https://www.jojogames.xyz",
-        "image": "https://www.jojogames.xyz/assets/images/preview-image.jpg",
-        "publisher": {
-            "@type": "Organization",
-            "name": "JoJo Games",
-            "url": "https://www.jojogames.xyz"
-        }
+        "logo": "https://www.jojogames.xyz/image/jojogamesimg.png",
+        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
+        "sameAs": [
+            "https://twitter.com/JoJoBlock_",
+            "https://www.facebook.com/profile.php?id=61569599862994",
+            "https://www.pinterest.com/JoJosBlocks",
+            "https://www.youtube.com/@JoJoPunk"
+        ]
     }
     </script>
-     <!-- Google Analytics -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
-     <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag() { dataLayer.push(arguments); }
-         gtag('js', new Date());
-         gtag('config', 'G-4DTGTEBSZY');
-     </script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4DTGTEBSZY');
+    </script>
+
+    <!-- Styles -->
     <style>
         /* Google Font Import */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -68,7 +89,7 @@
         /* Navigation Bar */
         .nav-bar {
             background: #222;
-            padding: 15px;
+            padding: 10px 15px;
             position: sticky;
             top: 0;
             width: 100%;
@@ -79,10 +100,21 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Space between logo and text */
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -93,7 +125,7 @@
         .nav-bar .menu a {
             color: #f8b400;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             transition: color 0.3s ease-in-out;
         }
@@ -195,6 +227,13 @@
             box-shadow: 0 5px 20px rgba(255, 165, 0, 0.5);
         }
 
+        .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
         .game-card h2 {
             font-size: 22px;
             color: #ffcc00;
@@ -264,83 +303,91 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
-    <nav class="nav-bar">
-        <a href="index.html" class="logo">JoJo Games</a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="image/jojogamesimg.png" alt="JoJo Games Logo">
+            <span>JoJo Games</span>
+        </div>
         <div class="menu">
-            <a href="index.html">All Games</a>
+            <a href="#all-games">All Games</a>
             <a href="service.html">Service</a>
             <a href="blogs.html">Blogs</a>
             <a href="about.html">About Me</a>
         </div>
-    </nav>
+        <div class="hamburger">&#9776;</div>
+    </div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">All Games</a>
+    <div class="mobile-menu">
+        <a href="#all-games">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
     </div>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <h1>Welcome to JoJo Games!</h1>
         <p>Your ultimate destination for fun and interactive games.</p>
     </header>
 
-    <!-- Main Content -->
-    <main class="game-list">
+    <!-- Game List -->
+    <div class="game-list">
         <div class="game-card">
-            <h2>Animal Guess Game - Fun Puzzle</h2>
+            <img src="image/animal-guess-game-img.jpg" alt="Animal Guess Game">
+            <h2>Animal Guess Game</h2>
             <p>Find the hidden animal in the grid before your attempts run out! Test your guessing skills.</p>
             <a href="games/animal-guess-game.html" class="play-button">Play Now</a>
         </div>
         <div class="game-card">
-            <h2>Memory Match - Brain Training</h2>
+            <img src="image/memory-match-img.jpg" alt="Memory Match Game">
+            <h2>Memory Match</h2>
             <p>Boost your memory by matching pairs of emojis in this fun puzzle game.</p>
-            <a href="games/memory-match-game.html" class="play-button">Play Now</a>
+            <a href="games/memory-match.html" class="play-button">Play Now</a>
         </div>
         <div class="game-card">
+            <img src="image/tic-tac-toe-img.jpg" alt="Tic-Tac-Toe Game">
             <h2>Tic-Tac-Toe Online</h2>
             <p>Play the classic Tic-Tac-Toe game against JoJo (AI). Can you win?</p>
-            <a href="games/tic-tac-toe-game.html" class="play-button">Play Now</a>
+            <a href="games/tic-tac-toe.html" class="play-button">Play Now</a>
         </div>
         <div class="game-card">
-            <h2>Click the Box - Speed Challenge</h2>
+            <img src="image/click-the-box-img.png" alt="Click the Box Game">
+            <h2>Click the Box</h2>
             <p>Click on the moving box as many times as you can before time runs out! Improve your reaction speed.</p>
-            <a href="games/click-the-box-game.html" class="play-button">Play Now</a>
+            <a href="games/click-the-box.html" class="play-button">Play Now</a>
         </div>
-    </main>
+    </div>
 
     <!-- About Section -->
-    <section class="about-games">
+    <div class="about-games">
         <h2>About These Games</h2>
-        <p>JoJo Games brings you a collection of engaging and fun online games, perfect for players of all ages. Whether you enjoy puzzle games, strategy challenges, or quick reflex tests, we have something for you!</p>
+        <p>JoJo Games brings you a collection of engaging and fun online games, perfect for players of all ages. Whether
+            you enjoy puzzle games, strategy challenges, or quick reflex tests, we have something for you!</p>
         <ul>
-            <li><strong>100% Free to Play</strong> - No downloads or sign-ups required.</li>
-            <li><strong>Fun for All Ages</strong> - Games suitable for kids and adults.</li>
-            <li><strong>Brain-Boosting Challenges</strong> - Improve memory, reflexes, and logic.</li>
+            <li><strong>100% Free to Play:</strong> No downloads or sign-ups required.</li>
+            <li><strong>Fun for All Ages:</strong> Games suitable for kids and adults.</li>
+            <li><strong>Brain-Boosting Challenges:</strong> Improve memory, reflexes, and logic.</li>
         </ul>
-    </section>
+    </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 JoJo Games. All rights reserved.</p>
+        © 2025 JoJo Games. All rights reserved.
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
-        }
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
     </script>
 </body>
+
 </html>
