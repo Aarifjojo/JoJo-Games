@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
-    <title>AI-Powered Creative Solutions – JoJo’s Block</title>
-    <meta name="description"
-        content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
-    <meta name="keywords"
-        content="AI services, creative solutions, JoJo’s Block, AI-generated images, AI music, AI videos, content creation, jojogames.xyz">
-    <meta name="author" content="JoJo Games">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph Meta Tags -->
+    <title>AI-Powered Creative Solutions – JoJo’s Block | Elevate Your Projects</title>
+
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Explore JoJo’s Block for AI-powered creative solutions, including image creation, music composition, video editing, and more. Tailored services for personal, professional, and business needs.">
+
+    <!-- Meta Keywords for SEO -->
+    <meta name="keywords" content="AI-powered services, creative solutions, AI image creation, AI music, AI video editing, branding, content creation, JoJo Games, JoJo's Block">
+
+    <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="AI-Powered Creative Solutions – JoJo’s Block">
-    <meta property="og:description"
-        content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
-    <meta property="og:image" content="https://jojogames.xyz/assets/images/service-preview.jpg">
-    <meta property="og:url" content="https://jojogames.xyz/service.html">
+    <meta property="og:description" content="Elevate your projects with JoJo’s Block’s AI-driven creative services. From logos to videos, we’ve got you covered.">
+    <meta property="og:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
+    <meta property="og:url" content="https://www.jojogames.xyz/service.html">
     <meta property="og:type" content="website">
-    <!-- Twitter Meta Tags -->
+
+    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI-Powered Creative Solutions – JoJo’s Block">
-    <meta name="twitter:description"
-        content="Explore AI-powered creative solutions at JoJo’s Block. From AI-generated images, music, and videos to custom content creation, we provide tailored services for personal, professional, and business needs.">
-    <meta name="twitter:image" content="https://jojogames.xyz/assets/images/service-preview.jpg">
+    <meta name="twitter:description" content="Discover AI-driven creative solutions for image creation, music, video editing, and more at JoJo’s Block. Tailored services for all your needs.">
+    <meta name="twitter:image" content="https://www.jojogames.xyz/image/jojogamesimg.png">
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="https://www.jojogames.xyz/service.html">
+
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "JoJo Games",
+        "url": "https://www.jojogames.xyz",
+        "logo": "https://www.jojogames.xyz/image/jojogamesimg.png",
+        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
+        "sameAs": [
+            "https://twitter.com/JoJoBlock_",
+            "https://www.facebook.com/profile.php?id=61569599862994",
+            "https://www.pinterest.com/JoJosBlocks",
+            "https://www.youtube.com/@JoJoPunk"
+        ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
     <script>
@@ -33,12 +60,9 @@
         gtag('js', new Date());
         gtag('config', 'G-4DTGTEBSZY');
     </script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <style>
-        /* Google Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+    <!-- Styles -->
+    <style>
         /* General Styles */
         * {
             margin: 0;
@@ -49,7 +73,7 @@
 
         body {
             background-color: #121212;
-            color: #fff;
+            color: #ffffff;
             line-height: 1.6;
             padding: 20px;
         }
@@ -68,10 +92,20 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -163,9 +197,12 @@
 
         /* Service Content */
         .service-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
         .service-content h2 {
@@ -174,20 +211,15 @@
             margin-bottom: 15px;
         }
 
-        .service-content p {
-            font-size: 16px;
-            margin: 10px 0;
-            color: #bbb;
-        }
-
         .service-content ul {
             list-style: disc;
             margin-left: 20px;
             color: #bbb;
         }
 
+        /* Service Cards */
         .service-card {
-            background: #1e1e1e;
+            background: #2a2a2a;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -200,6 +232,7 @@
             box-shadow: 0 5px 20px rgba(255, 165, 0, 0.5);
         }
 
+        /* Call-to-Action Button */
         .cta-btn {
             display: inline-block;
             margin-top: 20px;
@@ -225,55 +258,46 @@
             font-size: 14px;
             color: #bbb;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .service-content {
-                padding: 10px;
-            }
-        }
     </style>
 </head>
-
 <body>
     <!-- Navigation Bar -->
-    <nav class="nav-bar">
-        <a href="index.html" class="logo">JoJo Games</a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="image/jojogamesimg.png" alt="JoJo Games Logo">
+            <span>JoJo Games</span>
+        </div>
         <div class="menu">
             <a href="index.html">All Games</a>
             <a href="service.html">Service</a>
             <a href="blogs.html">Blogs</a>
             <a href="about.html">About Me</a>
         </div>
-    </nav>
+        <div class="hamburger">&#9776;</div>
+    </div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu">
         <a href="index.html">All Games</a>
         <a href="service.html">Service</a>
         <a href="blogs.html">Blogs</a>
         <a href="about.html">About Me</a>
     </div>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <h1>AI-Powered Creative Solutions – JoJo’s Block</h1>
-        <p>Welcome to JoJo’s Block, where creativity meets technology! Our wide range of AI-powered services is designed
-            to fulfill personal, professional, and business needs.</p>
+        <p>Welcome to JoJo’s Block, where creativity meets technology! Our wide range of AI-powered services is designed to fulfill personal, professional, and business needs.</p>
     </header>
 
     <!-- Service Content -->
-    <main class="service-content">
-        <h2>Explore Our Tailored Solutions</h2>
-
+    <div class="service-content">
         <!-- AI Image Creation Services -->
         <div class="service-card">
-            <h3>AI Image Creation Services</h3>
+            <h2>AI Image Creation Services</h2>
             <ul>
                 <li><strong>AI-Generated Images:</strong> Stunning visuals in diverse styles and themes.</li>
-                <li><strong>Custom Avatars:</strong> Unique social media avatars for Instagram, Twitter, LinkedIn, and
-                    more.</li>
+                <li><strong>Custom Avatars:</strong> Unique social media avatars for Instagram, Twitter, LinkedIn, and more.</li>
                 <li><strong>Custom Greeting Cards:</strong> AI-designed birthday, festive, and thank-you cards.</li>
                 <li><strong>Book & Album Covers:</strong> Creative covers for eBooks, books, and music albums.</li>
                 <li><strong>Logos & Branding:</strong> AI-crafted logos and brand identity kits.</li>
@@ -286,7 +310,7 @@
 
         <!-- AI Music Services -->
         <div class="service-card">
-            <h3>AI Music Services</h3>
+            <h2>AI Music Services</h2>
             <ul>
                 <li><strong>Personalized Birthday Songs:</strong> Custom AI-composed birthday tracks.</li>
                 <li><strong>Copyright-Free Music:</strong> High-quality AI music for commercial or personal use.</li>
@@ -298,12 +322,11 @@
 
         <!-- AI Video Services -->
         <div class="service-card">
-            <h3>AI Video Services</h3>
+            <h2>AI Video Services</h2>
             <ul>
                 <li><strong>Short Video Creation:</strong> Perfect for social media or personal projects.</li>
                 <li><strong>Short Films:</strong> AI-assisted short movie production.</li>
-                <li><strong>Custom Video Creation:</strong> From explainer videos to montages, we’ve got you covered.
-                </li>
+                <li><strong>Custom Video Creation:</strong> From explainer videos to montages, we’ve got you covered.</li>
                 <li><strong>Brand Ads:</strong> AI-generated advertisements with video and image assets.</li>
                 <li><strong>Video Intros/Outros:</strong> Professional branding intros and outros for videos.</li>
             </ul>
@@ -311,7 +334,7 @@
 
         <!-- AI Content Services -->
         <div class="service-card">
-            <h3>AI Content Services</h3>
+            <h2>AI Content Services</h2>
             <ul>
                 <li><strong>Custom Blogs & Articles:</strong> Niche-specific, audience-focused content.</li>
                 <li><strong>SEO-Optimized Content:</strong> Keyword-rich articles for better rankings.</li>
@@ -323,62 +346,47 @@
 
         <!-- Specialized Services -->
         <div class="service-card">
-            <h3>Specialized Services</h3>
+            <h2>Specialized Services</h2>
             <ul>
                 <li><strong>Promotional Campaigns:</strong> End-to-end AI-driven promotional design and strategy.</li>
                 <li><strong>Pinterest Pin Design:</strong> Beautiful, effective Pinterest graphics.</li>
                 <li><strong>Merchandising Art:</strong> AI-crafted designs for t-shirts, mugs, and more.</li>
-                <li><strong>Social Media Post Designs:</strong> Templates and posts for Instagram, Facebook, and
-                    Twitter.</li>
+                <li><strong>Social Media Post Designs:</strong> Templates and posts for Instagram, Facebook, and Twitter.</li>
                 <li><strong>Event Posters:</strong> Creative posters for events and parties.</li>
                 <li><strong>Creative Collaborations:</strong> Partner with us for unique AI-driven projects.</li>
             </ul>
         </div>
 
-        <h2>Why Choose JoJo’s Block?</h2>
-        <p>We believe in delivering exceptional value through cutting-edge AI tools and tailored solutions:</p>
-        <ul>
-            <li><strong>Cutting-Edge AI Tools:</strong> Harness the latest technology for outstanding results.</li>
-            <li><strong>Tailored Solutions:</strong> Services customized to meet your unique needs.</li>
-            <li><strong>Affordable Pricing:</strong> Competitive rates with flexible packages.</li>
-            <li><strong>Proven Track Record:</strong> Satisfied clients and a growing portfolio.</li>
-        </ul>
+        <!-- Why Choose JoJo’s Block? -->
+        <div class="service-card">
+            <h2>Why Choose JoJo’s Block?</h2>
+            <ul>
+                <li><strong>Cutting-Edge AI Tools:</strong> Harness the latest technology for outstanding results.</li>
+                <li><strong>Tailored Solutions:</strong> Services customized to meet your unique needs.</li>
+                <li><strong>Affordable Pricing:</strong> Competitive rates with flexible packages.</li>
+                <li><strong>Proven Track Record:</strong> Satisfied clients and a growing portfolio.</li>
+            </ul>
+        </div>
 
-        <blockquote>
-            "At JoJo’s Block, we’re dedicated to providing top-notch AI-driven creative solutions that make a
-            difference. Whether you’re a content creator, entrepreneur, or artist, our services are here to elevate your
-            projects."
-        </blockquote>
+        <!-- Call-to-Action -->
+        <div style="text-align: center;">
+            <a href="mailto:jojobusiness0101@gmail.com" class="cta-btn">Contact Us Today</a>
+        </div>
+    </div>
 
-        <a href="#contact" class="cta-btn">Get Started Today</a>
-    </main>
-
-    <!-- Contact Section -->
-    <section id="contact" class="service-content">
-        <h2>Get Started with JoJo’s Block</h2>
-        <p>Ready to bring your vision to life? Contact us today!</p>
-        <p><strong>Email:</strong> <a href="mailto:jojobusiness0101@gmail.com">jojobusiness0101@gmail.com</a></p>
-        <p><strong>Pinterest:</strong> <a href="https://in.pinterest.com/JoJosBlocks/" target="_blank">Follow Us on
-                Pinterest</a></p>
-    </section>
-
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 JoJo Games. All rights reserved. Visit us at <a href="https://jojogames.xyz"
-                style="color: #ff5733;">jojogames.xyz</a>.</p>
+        © 2025 JoJo Games. All rights reserved. Visit us at <a href="https://www.jojogames.xyz" style="color: #f8b400;">jojogames.xyz</a>.
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
-        }
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
     </script>
 </body>
-
 </html>
