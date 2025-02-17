@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
     <title>AI Prompts Writing | JoJo Games</title>
-    <meta name="description" content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
-    <meta name="keywords" content="AI prompts, creative writing, ChatGPT prompts, AI tools, writing tips, learning with AI, jojogames.xyz">
-    <meta name="author" content="JoJo Games">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph Meta Tags -->
+
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
+
+    <!-- Meta Keywords for SEO -->
+    <meta name="keywords"
+        content="AI prompts, creative writing, ChatGPT prompts, AI tools, writing tips, learning with AI, jojogames.xyz">
+
+    <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="AI Prompts Writing | JoJo Games">
-    <meta property="og:description" content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
+    <meta property="og:description"
+        content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
     <meta property="og:image" content="https://jojogames.xyz/assets/images/ai-prompts-preview.jpg">
     <meta property="og:url" content="https://jojogames.xyz/Blogs/ai-prompts-writing.html">
     <meta property="og:type" content="website">
-    <!-- Twitter Meta Tags -->
+
+    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Prompts Writing | JoJo Games">
-    <meta name="twitter:description" content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
+    <meta name="twitter:description"
+        content="Explore the power of AI prompts for creative writing, learning, problem-solving, and more at jojogames.xyz. Discover tips, tools, and examples to enhance your productivity with AI.">
     <meta name="twitter:image" content="https://jojogames.xyz/assets/images/ai-prompts-preview.jpg">
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="https://jojogames.xyz/Blogs/ai-prompts-writing.html">
+
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "JoJo Games",
+        "url": "https://www.jojogames.xyz",
+        "logo": "https://www.jojogames.xyz/image/jojogamesimg.png",
+        "description": "Play free online games including Tic-Tac-Toe, Memory Match, Animal Guess, and more. Enjoy fun, interactive browser games without downloads.",
+        "sameAs": [
+            "https://twitter.com/JoJoBlock_",
+            "https://www.facebook.com/profile.php?id=61569599862994",
+            "https://www.pinterest.com/JoJosBlocks",
+            "https://www.youtube.com/@JoJoPunk"
+        ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
     <script>
@@ -28,12 +65,9 @@
         gtag('js', new Date());
         gtag('config', 'G-4DTGTEBSZY');
     </script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <style>
-        /* Google Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+    <!-- Styles -->
+    <style>
         /* General Styles */
         * {
             margin: 0;
@@ -44,7 +78,7 @@
 
         body {
             background-color: #121212;
-            color: #fff;
+            color: #ffffff;
             line-height: 1.6;
             padding: 20px;
         }
@@ -63,10 +97,20 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -224,18 +268,22 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
-    <nav class="nav-bar">
-        <a href="https://www.jojogames.xyz/index.html" class="logo">JoJo Games</a>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="jojogamesimg.png" alt="JoJo Games Logo">
+            <span>JoJo Games</span>
+        </div>
         <div class="menu">
             <a href="https://www.jojogames.xyz/index.html">All Games</a>
             <a href="https://www.jojogames.xyz/service.html">Service</a>
             <a href="https://www.jojogames.xyz/blogs.html">Blogs</a>
             <a href="https://www.jojogames.xyz/about.html">About Me</a>
         </div>
-    </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
@@ -248,7 +296,8 @@
     <!-- Header Section -->
     <header>
         <h1>AI Prompts Writing</h1>
-        <p>Unlock the power of AI prompts for creative writing, learning, problem-solving, and more at <strong>jojogames.xyz</strong>.</p>
+        <p>Unlock the power of AI prompts for creative writing, learning, problem-solving, and more at
+            <strong>jojogames.xyz</strong>.</p>
     </header>
 
     <!-- Blog Cards -->
@@ -256,14 +305,16 @@
         <!-- Blog Post 1 -->
         <div class="blog-card">
             <h2>Top 10 ChatGPT Prompts for Students</h2>
-            <p>Discover the best ChatGPT prompts designed specifically for students to enhance learning and solve academic challenges.</p>
+            <p>Discover the best ChatGPT prompts designed specifically for students to enhance learning and solve
+                academic challenges.</p>
             <a href="top_10_students_prompt_one.html" class="read-more">Read More</a>
         </div>
 
         <!-- Blog Post 2 -->
         <div class="blog-card">
             <h2>How to Use AI Prompts for Creative Writing</h2>
-            <p>Learn how to use AI prompts to generate story ideas, characters, and dialogues for your creative writing projects.</p>
+            <p>Learn how to use AI prompts to generate story ideas, characters, and dialogues for your creative writing
+                projects.</p>
             <a href="creative-writing-prompts.html" class="read-more">Read More</a>
         </div>
 
@@ -277,26 +328,26 @@
         <!-- Blog Post 4 -->
         <div class="blog-card">
             <h2>Best AI Prompts for Career Guidance</h2>
-            <p>Find out how AI prompts can guide you in choosing the right career path based on your interests and skills.</p>
+            <p>Find out how AI prompts can guide you in choosing the right career path based on your interests and
+                skills.</p>
             <a href="career-guidance-prompts.html" class="read-more">Read More</a>
         </div>
+
     </main>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 JoJo Games. All rights reserved. Visit us at <a href="https://jojogames.xyz" style="color: #ff5733;">jojogames.xyz</a>.</p>
+        <p>&copy; 2025 JoJo Games. All rights reserved. Visit us at <a href="https://jojogames.xyz"
+                style="color: #ff5733;">jojogames.xyz</a>.</p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
         function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("active");
         }
     </script>
 </body>
+
 </html>
