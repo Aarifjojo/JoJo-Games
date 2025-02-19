@@ -58,7 +58,7 @@
             padding: 20px;
         }
 
-        /* Navigation Bar */
+         /* Navigation Bar */
         .nav-bar {
             background: #222;
             padding: 15px;
@@ -72,10 +72,20 @@
         }
 
         .nav-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-bar .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-bar .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #f8b400;
-            text-decoration: none;
         }
 
         .nav-bar .menu {
@@ -128,6 +138,7 @@
         .mobile-menu a:hover {
             color: #ff5733;
         }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
