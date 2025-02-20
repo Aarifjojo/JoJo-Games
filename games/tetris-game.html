@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Tetris | JoJo Games</title>
+    <meta name="description" content="Play Tetris online! Test your skills, clear lines, and achieve high scores in this classic puzzle game.">
+    <meta name="keywords" content="Tetris, puzzle game, online game, JoJo Games, play Tetris">
+    <meta name="author" content="JoJo Games">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tetris | JoJo Games">
+    <meta property="og:description" content="Experience Tetris online! Clear lines and score big in this classic puzzle game.">
+    <meta property="og:image" content="https://jojogames.xyz/assets/images/tetris-thumbnail.jpg">
+    <meta property="og:url" content="https://jojogames.xyz/tetris">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tetris | JoJo Games">
+    <meta name="twitter:description" content="Play Tetris online and enjoy the classic puzzle game experience with JoJo Games.">
+    <meta name="twitter:image" content="https://jojogames.xyz/assets/images/tetris-thumbnail.jpg">
+
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2180735294281383" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Tetris",
+      "description": "A classic puzzle game where players clear lines by arranging falling blocks.",
+      "image": "https://jojogames.xyz/assets/images/tetris-thumbnail.jpg",
+      "url": "https://jojogames.xyz/tetris",
+      "author": {
+        "@type": "Organization",
+        "name": "JoJo Games"
+      }
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DTGTEBSZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4DTGTEBSZY');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://jojogames.xyz/assets/images/favicon.png">
+
+    <style>
+        /* Universal Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #000428, #004e92);
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Game Container */
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 450px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Game Area */
+        #game-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Game Board */
+        #game-board {
+            display: grid;
+            grid-template-rows: repeat(20, 25px);
+            grid-template-columns: repeat(10, 25px);
+            gap: 2px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #00ffff;
+            border-radius: 8px;
+            margin-top: 15px;
+            padding: 5px;
+        }
+
+        /* Grid Cells */
+        .cell {
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        /* Tetrimino Blocks */
+        .tetrimino {
+            background: linear-gradient(135deg, #ff007f, #ff6600);
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.8);
+        }
+
+        /* Stats Section */
+        #stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        #stats div {
+            font-size: 1rem;
+            color: #00ffff;
+        }
+
+        /* Next Block Preview */
+        #next-block-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        #next-block {
+            display: grid;
+            gap: 2px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #00ffff;
+            border-radius: 8px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .next-cell {
+            width: 18px;
+            height: 18px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 3px;
+        }
+
+        /* Control Buttons */
+        #controls {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #ff007f, #ff6600);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff6600, #ff007f);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.8);
+        }
+
+        button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+
+        /* Game Over Screen */
+        #game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(255, 0, 127, 0.8);
+            text-align: center;
+        }
+
+        #game-over h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #ff007f;
+        }
+
+        #game-over button {
+            background: linear-gradient(135deg, #007bff, #00ffff);
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area">
+            <div id="stats">
+                <div id="stats-left">
+                    <div>Level: <span id="level-value">1</span></div>
+                    <div>Score: <span id="score-value">0</span></div>
+                </div>
+                <div id="stats-right">
+                    <div>Lines: <span id="lines-value">0</span></div>
+                    <div id="next-block-container">
+                        <div>Next:</div>
+                        <div id="next-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="game-board"></div>
+        </div>
+        <div id="controls">
+            <button onclick="startGame()">Start</button>
+        </div>
+    </div>
+
+    <div id="game-over">
+        <h1>Game Over!</h1>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+
+    <audio id="gameover-sound" src="assets/games-sounds/game-over-sound.mp3"></audio>
+    <audio id="rotate-sound" src="assets/games-sounds/sounds_block-rotate.mp3"></audio>
+    <audio id="drop-sound" src="assets/games-sounds/sounds_line-drop.mp3"></audio>
+    <audio id="clear-sound" src="assets/games-sounds/sounds_line-removal4.mp3"></audio>
+    <audio id="start-sound" src="assets/games-sounds/sounds_start.mp3"></audio>
+    <audio id="hit-sound" src="assets/games-sounds/sounds_slow-hit.mp3"></audio>
+    <audio id="background-music" loop>
+        <source src="assets/games-sounds/Retro-Arcade-Dreams.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const gameBoard = document.getElementById('game-board');
+        const nextBlock = document.getElementById('next-block');
+        const scoreDisplay = document.getElementById('score-value');
+        const levelDisplay = document.getElementById('level-value');
+        const linesDisplay = document.getElementById('lines-value');
+        const startButton = document.querySelector('#controls button');
+        const gameOverScreen = document.getElementById('game-over');
+        const gameOverSound = document.getElementById('gameover-sound');
+        const rotateSound = document.getElementById('rotate-sound');
+        const dropSound = document.getElementById('drop-sound');
+        const clearSound = document.getElementById('clear-sound');
+        const startSound = document.getElementById('start-sound');
+        const hitSound = document.getElementById('hit-sound');
+        const backgroundMusic = document.getElementById('background-music');
+
+        const COLS = 10;
+        const ROWS = 20;
+        const CELL_SIZE = 25;
+        let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        let currentPiece = null;
+        let nextPiece = null;
+        let score = 0;
+        let level = 1;
+        let lines = 0;
+        let gameInterval = null;
+
+        const tetriminos = [
+            [[1, 1, 1, 1]],
+            [[1, 1], [1, 1]],
+            [[0, 1, 0], [1, 1, 1]],
+            [[1, 0, 0], [1, 1, 1]],
+            [[0, 0, 1], [1, 1, 1]],
+            [[1, 1, 0], [0, 1, 1]],
+            [[0, 1, 1], [1, 1, 0]]
+        ];
+
+        const colors = ['#FF6347', '#32CD32', '#1E90FF', '#FFD700', '#FF4500', '#8A2BE2', '#DA70D6'];
+
+        function createBoard() {
+            for (let row = 0; row < ROWS; row++) {
+                for (let col = 0; col < COLS; col++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    gameBoard.appendChild(cell);
+                }
+            }
+        }
+
+        function drawBoard() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach((cell, index) => {
+                const row = Math.floor(index / COLS);
+                const col = index % COLS;
+                cell.style.backgroundColor = board[row][col] ? colors[board[row][col] - 1] : '#fff';
+            });
+        }
+
+        function drawPiece(piece, offsetX, offsetY) {
+            piece.shape.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if (cell) {
+                        const xPos = offsetX + x;
+                        const yPos = offsetY + y;
+                        if (xPos >= 0 && xPos < COLS && yPos >= 0 && yPos < ROWS) {
+                            board[yPos][xPos] = piece.color;
+                        }
+                    }
+                });
+            });
+        }
+
+        function undrawPiece(piece, offsetX, offsetY) {
+            piece.shape.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if (cell) {
+                        const xPos = offsetX + x;
+                        const yPos = offsetY + y;
+                        if (xPos >= 0 && xPos < COLS && yPos >= 0 && yPos < ROWS) {
+                            board[yPos][xPos] = 0;
+                        }
+                    }
+                });
+            });
+        }
+
+        function rotatePiece(piece) {
+            const newShape = piece.shape[0].map((_, index) =>
+                piece.shape.map(row => row[index]).reverse()
+            );
+            return { ...piece, shape: newShape };
+        }
+
+        function checkCollision(piece, offsetX, offsetY) {
+            for (let y = 0; y < piece.shape.length; y++) {
+                for (let x = 0; x < piece.shape[y].length; x++) {
+                    if (piece.shape[y][x]) {
+                        const newX = offsetX + x;
+                        const newY = offsetY + y;
+                        if (newX < 0 || newX >= COLS || newY >= ROWS || (newY >= 0 && board[newY][newX])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function mergePiece(piece, offsetX, offsetY) {
+            piece.shape.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if (cell) {
+                        const xPos = offsetX + x;
+                        const yPos = offsetY + y;
+                        if (xPos >= 0 && xPos < COLS && yPos >= 0 && yPos < ROWS) {
+                            board[yPos][xPos] = piece.color;
+                        }
+                    }
+                });
+            });
+        }
+
+        function clearLines() {
+            let clearedLines = 0;
+            outer: for (let y = ROWS - 1; y >= 0; y--) {
+                for (let x = 0; x < COLS; x++) {
+                    if (!board[y][x]) {
+                        continue outer;
+                    }
+                }
+                const row = board.splice(y, 1)[0].fill(0);
+                board.unshift(row);
+                clearedLines++;
+            }
+            if (clearedLines > 0) {
+                clearSound.play();
+                score += clearedLines * 100;
+                lines += clearedLines;
+                linesDisplay.textContent = lines;
+                scoreDisplay.textContent = score;
+                level = Math.floor(lines / 10) + 1;
+                levelDisplay.textContent = level;
+                if (gameInterval) {
+                    clearInterval(gameInterval);
+                    gameInterval = setInterval(dropPiece, 1000 / level);
+                }
+            }
+        }
+
+        function dropPiece() {
+            undrawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            currentPiece.y++;
+            if (checkCollision(currentPiece, currentPiece.x, currentPiece.y)) {
+                currentPiece.y--;
+                mergePiece(currentPiece, currentPiece.x, currentPiece.y);
+                hitSound.play();
+                clearLines();
+                currentPiece = nextPiece;
+                nextPiece = getRandomPiece();
+                drawNextBlock(nextPiece);
+                if (checkCollision(currentPiece, currentPiece.x, currentPiece.y)) {
+                    gameOver();
+                }
+            }
+            drawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            drawBoard();
+            dropSound.play();
+        }
+
+        function getRandomPiece() {
+            const index = Math.floor(Math.random() * tetriminos.length);
+            const shape = tetriminos[index];
+            const color = index + 1;
+            return { shape, color, x: Math.floor(COLS / 2) - Math.floor(shape[0].length / 2), y: 0 };
+        }
+
+        function drawNextBlock(piece) {
+            nextBlock.innerHTML = '';
+            nextBlock.style.gridTemplateRows = `repeat(${piece.shape.length}, 18px)`;
+            nextBlock.style.gridTemplateColumns = `repeat(${piece.shape[0].length}, 18px)`;
+            piece.shape.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    const nextCell = document.createElement('div');
+                    nextCell.classList.add('next-cell');
+                    nextCell.style.backgroundColor = cell ? colors[piece.color - 1] : '#fff';
+                    nextBlock.appendChild(nextCell);
+                });
+            });
+        }
+
+        function startGame() {
+            if (gameInterval) return;
+            score = 0;
+            level = 1;
+            lines = 0;
+            board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+            currentPiece = getRandomPiece();
+            nextPiece = getRandomPiece();
+            scoreDisplay.textContent = score;
+            levelDisplay.textContent = level;
+            linesDisplay.textContent = lines;
+            drawNextBlock(nextPiece);
+            startButton.disabled = true;
+            gameOverScreen.style.display = 'none';
+            gameInterval = setInterval(dropPiece, 1000 / level);
+            backgroundMusic.play();
+            startSound.play();
+        }
+
+        function gameOver() {
+            clearInterval(gameInterval);
+            gameInterval = null;
+            startButton.disabled = false;
+            gameOverSound.play();
+            backgroundMusic.pause();
+            gameOverScreen.style.display = 'flex';
+        }
+
+        function restartGame() {
+            startGame();
+            gameOverScreen.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', event => {
+            if (!currentPiece) return;
+            switch (event.key) {
+                case 'ArrowLeft':
+                    movePiece('left');
+                    break;
+                case 'ArrowRight':
+                    movePiece('right');
+                    break;
+                case 'ArrowDown':
+                    dropPiece();
+                    break;
+                case 'ArrowUp':
+                    rotateCurrentPiece();
+                    break;
+            }
+        });
+
+        function movePiece(direction) {
+            undrawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            currentPiece.x += direction === 'left' ? -1 : 1;
+            if (checkCollision(currentPiece, currentPiece.x, currentPiece.y)) {
+                currentPiece.x += direction === 'left' ? 1 : -1;
+            }
+            drawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            drawBoard();
+        }
+
+        function rotateCurrentPiece() {
+            rotateSound.play();
+            undrawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            const rotatedPiece = rotatePiece(currentPiece);
+            if (!checkCollision(rotatedPiece, currentPiece.x, currentPiece.y)) {
+                currentPiece = rotatedPiece;
+            }
+            drawPiece(currentPiece, currentPiece.x, currentPiece.y);
+            drawBoard();
+        }
+
+        createBoard();
+        drawBoard();
+    </script>
+</body>
+</html>
