@@ -84,6 +84,8 @@
             padding: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: auto;
+            max-height: 90vh;
         }
 
         /* Game Area */
@@ -105,6 +107,7 @@
             border-radius: 8px;
             margin-top: 15px;
             padding: 5px;
+            touch-action: pan-y;
         }
 
         /* Grid Cells */
@@ -214,6 +217,43 @@
             background: linear-gradient(135deg, #007bff, #00ffff);
             box-shadow: 0 4px 12px rgba(0, 255, 255, 0.5);
         }
+
+        /* Mobile Controls */
+        #mobile-controls {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+        }
+
+        #mobile-controls button {
+            padding: 15px;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.5);
+        }
+
+        #mobile-controls button:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            #mobile-controls {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
@@ -242,6 +282,13 @@
     <div id="game-over">
         <h1>Game Over!</h1>
         <button onclick="restartGame()">Restart</button>
+    </div>
+
+    <div id="mobile-controls">
+        <button onclick="movePiece('left')">←</button>
+        <button onclick="rotateCurrentPiece()">⟳</button>
+        <button onclick="movePiece('right')">→</button>
+        <button onclick="dropPiece()">↓</button>
     </div>
 
     <audio id="gameover-sound" src="assets/games-sounds/game-over-sound.mp3"></audio>
